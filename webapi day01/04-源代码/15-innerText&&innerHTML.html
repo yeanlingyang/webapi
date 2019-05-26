@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="button" value="按钮" id="btn1">
+    <button value="嘿嘿" id="btn2">哈哈</button>
+
+    <div id="box">
+        <h1>今天大家的学习状态不错</h1>
+    </div>
+
+
+    <script>
+        /*var btn1 = document.getElementById("btn1");
+
+        btn1.onclick = function(){
+            this.value = "嘻嘻";
+        }
+
+
+        var btn2 = document.getElementById("btn2");
+
+        btn2.onclick = function(){
+            this.value = "嘻嘻";
+        }*/
+
+
+        // 操作文本内容
+        // innerText    innerHTML
+
+        // 区别：
+        // innerText:  内部的文本
+        // innerHTML： 内部的html
+
+        // 对比
+
+        var box = document.getElementById("box");
+
+        // 获取文本内容
+        //   innerText:  只会获取到文本，舍弃了标签
+        //   innerHTML： 获取到标签 + 内容
+        // console.log(box.innerText);
+        // console.log(box.innerHTML);
+
+
+        // 设置文本内容（纯文本）
+        //  innerText innerHTML 的共同点： 设置内容的时候，都会把原来的内容给覆盖掉
+        // box.innerText = "大家的学习积极心忒高";
+        // box.innerHTML = "大家的学习积极心忒高,很好";
+
+
+        // 设置文本内容（带标签）
+        //  innerText 不识别标签，标签当做文本对待。 标签被转移了
+        //  innerHTML 识别标签
+        // box.innerText = "<h2>大家的学习积极心忒高</h2>";
+        box.innerHTML = "<h2>大家的学习积极心忒高</h2>";
+
+
+        // 小结；
+        //  操作文本内容（获取 + 设置）
+        //  innerText ： 不能识别标签
+        //      获取：不会获取到标签，只获取纯文本
+        //      设置：不会解析标签，当做普通文本
+        //  innerHTML  可以识别标签的
+        //      获取：能获取到标签 + 内容
+        //      设置： 可以解析标签
+    </script>
+</body>
+</html>

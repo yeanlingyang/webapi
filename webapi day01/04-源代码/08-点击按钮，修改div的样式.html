@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .demo{
+            width: 300px;
+            height: 300px;
+            background-color: #f99;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="button" value="按钮">
+
+    <div id="box">哈哈，今天在41期上课，班里很活跃</div>
+
+    <script>
+        // 思路：
+        // 1. 找对象（input、div）
+        // 2. 给input注册click
+        // 3. 点击了要给div设置类名为 demo
+
+        // 1.
+        var inp = document.getElementsByTagName("input")[0];
+        var box = document.getElementById("box");
+
+        // 2.
+        inp.onclick = function () {
+            
+            // 标签中类名写class，由于class 在js中是个关键字，所以在对象中不能使用class来表示类名
+
+            // 在对象中，使用className来表示类名
+
+            // 3.
+            // error
+            // box.class = "demo";
+
+            box.className = "demo";
+        }
+    </script>
+</body>
+</html>

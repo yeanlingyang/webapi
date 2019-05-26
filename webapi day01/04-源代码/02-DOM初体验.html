@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <img id="pic" src="imgs/1.jpg" alt="这是啥图片" title="展示点啥">
+
+    <script>
+
+        // 需求： 修改img的src属性
+
+        // 思路：
+        // 1. 找到img对象
+
+        // api：
+        // document 对象
+        // get 获取  element 元素  by  通过  id id名
+        // 作用： 从页面中根据id名去获取元素
+        // 参数： 字符串类型的id名
+        // 返回值： 获取到的对象
+        // document.getElementById(id)
+
+        var ret = document.getElementById("pic");
+        // console.log 在打印的时候，会以标签的形式展示出来
+        // console.dir 在打印的时候，会以对象的形式展示出来
+        console.dir(ret);
+
+
+        // 标签中的属性和dom对象中的属性是一一对应的。可以修改dom对象的属性达到修改标签中的属性
+
+
+        // 获取属性
+        // console.log(ret.alt);
+        // console.log(ret.title);
+
+
+        ret.title = "今天在41期上课";
+
+        ret.src = "imgs/2.jpg";
+
+
+        // 小结：
+        //  document.getElementById()
+        //  一一对应 
+
+
+    </script>
+</body>
+</html>

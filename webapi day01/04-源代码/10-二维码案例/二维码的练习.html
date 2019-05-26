@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+      .nodeSmall {
+        width: 50px;
+        height: 50px;
+        background: url(images/bgs.png) no-repeat -159px -51px;
+        position: fixed;
+        right: 10px;
+        top: 40%;
+      }
+      
+      .erweima {
+        position: absolute;
+        top: 0;
+        left: -150px;
+        
+      }
+      
+      .nodeSmall a {
+        display: block;
+        width: 50px;
+        height: 50px;
+      }
+  
+      
+      .hide {
+        display: none;
+      }
+      
+      .show {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+  <div class="nodeSmall" id="node_small">
+    <a href="#" id="link"></a>
+    <div class="erweima hide" id="er">
+      <img src="images/456.png" alt=""/>
+    </div>
+  </div>
+  <script>
+    //找对象
+    var link = document.getElementById("link");
+    var er =document.getElementById("er");
+  
+    link.onmouseover =function () {
+      er.className = "erweima";
+    }
+    er.onmouseout = function() {
+      er.className= "erweima hide";
+    }
+    
+  
+  
+  
+  
+  </script>
+  
+</body>
+</html>

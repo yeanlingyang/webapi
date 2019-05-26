@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- <div>班上不错</div>
+    <div>班上不错</div>
+    <div>班上不错</div>
+    <div>班上不错</div> -->
+
+    <div title="哈哈">班上不错</div>
+
+    <script>
+
+        // 通过id来获取元素
+        // 参数：id名
+        // 返回值： 元素，只有一个
+        //  没有获取到元素，返回null
+        // document.getElementById(id)
+
+        // 通过标签名来获取元素
+        // 参数： 标签名
+        // 返回值： 伪数组，存了获取到每一个元素
+        // 写法： 2种
+        //      document.getElementsByTagName(name) ==> 从整个页面中
+        //      box.getElementsByTagName(name)  ==> 从box 里面去找到，精确
+        //      
+        //      没有获取到元素，依旧返回伪数组，只不过伪数组里面是空的
+        //      始终返回的是伪数组
+        // document.getElementsByTagName(name)
+
+        var divs = document.getElementsByTagName("div")[0];
+        console.log(divs);
+    </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    body {
+        padding-left: 100px;
+    }
+
+    #imgs {
+        overflow: hidden;
+        margin: 50px 0;
+    }
+
+    #imgs li {
+        float: left;
+        margin-right: 10px;
+    }
+    </style>
+</head>
+
+<body>
+    <h1>美女相册</h1>
+    <ul id="imgs">
+        <li>
+            <a href="images/1.jpg" title="美女A">
+                <img src="images/1-small.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="images/2.jpg" title="美女B">
+                <img src="images/2-small.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="images/3.jpg" title="美女C">
+                <img src="images/3-small.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="images/4.jpg" title="美女D">
+                <img src="images/4-small.jpg" alt="">
+            </a>
+        </li>
+    </ul>
+    <!-- 大图 -->
+    <img src="images/placeholder.png" width="400" height="250" alt="" id="bigImg">
+
+    <!--说明信息-->
+    <p id="des">这是描述信息</p>
+
+    <script>
+        // 1. 找对象（a）
+        // 2. 给a注册click， 阻止a跳转
+        // 3. 修改大图的src属性
+        // 4. 修改p标签的文本内容
+
+        // 1.
+        var ul = document.getElementById("imgs"); // ul
+        var as = ul.getElementsByTagName("a");  // a
+        
+        var bigImg = document.getElementById("bigImg");
+        var des = document.getElementById("des");
+
+        // 2.
+        for(var i = 0; i < as.length; i++){
+            as[i].onclick = function(){
+
+                // 设置图片的src
+                bigImg.src = this.href;
+                // 设置文本内容
+                des.innerText = this.title;
+
+                // 阻止a链接的跳转
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>

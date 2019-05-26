@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <input type="button" value="切换" id="btn"><br>
+    <img src="images/1.jpg" width="300" id="img">
+    
+    <script>
+    // 需求：切换图片，切换的图片是 1.jpg、01.gif、02.gif、2.jpg、3.jpg
+    //       如何实现切换
+    var arr = ["images/1.jpg","images/01.gif","images/02.gif","images/2.jpg","images/3.jpg"]
+ 
+        var btn = document.getElementById("btn");
+        var img =document.getElementById("img");
+        var index= 0;
+        btn.onclick =function() {
+            index++;
+            if (index>arr.length-1) {
+                index=0;
+            }
+            img.src = arr[index];
+        }
+    </script>
+</body>
+
+</html>

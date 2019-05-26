@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <p title="abc">这是p标签的内容</p>
+    <p title="abc">这是p标签的内容</p>
+    <p title="abc">这是p标签的内容</p>
+    <p title="abc">这是p标签的内容</p>
+    <p title="abc">这是p标签的内容</p>
+    <p title="abc">这是p标签的内容</p>
+    <p title="abc">这是p标签的内容</p>
+    <p title="abc">这是p标签的内容</p>
+
+    <script>
+        // 作用： 在页面中通过标签名来获取元素
+        // 参数： 字符串类型的标签名
+        // 返回值： 伪数组（类数组），长的和数组很像（可以和数组一样进行遍历），但是不能使用数组的方法
+        //  伪数组里面装的是获取到的所有元素
+        var ps = document.getElementsByTagName("p");
+        console.log(ps);
+
+        // error : 伪数组不能使用数组的方法
+        // ps.push(10); 
+
+        // 把页面中每一个p元素都修改title属性
+
+
+        // error: 这是给伪数组添加了 title属性
+        // ps.title = "哈哈";
+
+
+        // 需要for循环遍历
+        for(var i = 0; i < ps.length; i++){
+            // console.log(ps[i]);
+            ps[i].title = "哈哈";
+        }
+    </script>
+</body>
+</html>

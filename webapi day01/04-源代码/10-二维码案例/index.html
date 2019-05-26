@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    .nodeSmall {
+      width: 50px;
+      height: 50px;
+      background: url(images/bgs.png) no-repeat -159px -51px;
+      position: fixed;
+      right: 10px;
+      top: 40%;
+    }
+    
+    .erweima {
+      position: absolute;
+      top: 0;
+      left: -150px;
+      
+    }
+    
+    .nodeSmall a {
+      display: block;
+      width: 50px;
+      height: 50px;
+    }
+
+    
+    .hide {
+      display: none;
+    }
+    
+    .show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<div class="nodeSmall" id="node_small">
+  <a href="#" id="link"></a>
+  <div class="erweima hide" id="er">
+    <img src="images/456.png" alt=""/>
+  </div>
+</div>
+
+<script>
+  // 新的事件
+  // 鼠标移入事件  onmouseover
+  // 鼠标离开事件  onmouseout
+
+  // 思路：
+  //  1. 找对象（link、er）
+  //  2. 给link 注册 onmouseover
+  //  3. 鼠标移入上去，显示 er， 去掉hide类名
+
+  // 1.
+  var link = document.getElementById("link");
+  var er = document.getElementById("er");
+
+  // 2.
+  link.onmouseover = function () {
+    // 3.
+    // className 在设置类名的时候，存在覆盖问题
+
+    er.className = "erweima";
+  }
+
+  link.onmouseout = function () {
+    // 加上hide类名
+    er.className = "erweima hide";
+  }
+</script>
+
+</body>
+</html>

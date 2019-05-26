@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input id="btn" type="button" value="按钮">
+
+    <br>
+
+    <img src="imgs/1.jpg" alt="这是啥图片" title="展示点啥">
+
+    <script>
+        // 事件的三要素
+        //    1. 事件源： 触发事件的元素
+        //    2. 事件名称： 比如 点击事件
+        //    3. 事件处理程序：事件触发了，要干嘛（函数形式）
+        
+        // 注册事件
+        // 语法：事件源.on+事件名称 = function(){}
+
+
+        // 思路：
+        //  1. 找对象（input、 img）
+        //  2. 给input 注册点击事件
+        //  3. 点击之后，切换img的src属性
+
+        // 1.
+        var inp = document.getElementById("btn");
+        var pic = document.getElementsByTagName("img")[0];
+
+        // 2.
+        // on : 当
+        // click： 事件名称  点击事件
+        // onclick: 当点击的时候
+
+
+        // 1. 事件处理程序不是自己主动执行的，当按钮点击过后才会执行的
+        // 2. 事件处理程序不是我们自己调用的，浏览器帮我们调用的
+        inp.onclick = function(){
+            console.log(123);
+
+            // 3.
+            pic.src = "./imgs/2.jpg";
+        }
+
+        // 小结：
+        //  事件：触发-响应
+        //  三要素：
+        //      1. 事件源： 元素
+        //      2. 事件名称： 点击事件 click
+        //      3. 事件处理程序：函数
+        //  注册事件：
+        //      事件源.on事件名称 = function(){}
+    </script>
+</body>
+</html>

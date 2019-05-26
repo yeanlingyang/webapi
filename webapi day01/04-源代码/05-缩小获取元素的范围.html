@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <ul id="box">
+        <li>这是li元素</li>
+        <li>这是li元素</li>
+        <li>这是li元素</li>
+        <li>这是li元素</li>
+        <li>这是li元素</li>
+        <li>这是li元素</li>
+        <li>这是li元素</li>
+        <li>这是li元素</li>
+        <li>这是li元素</li>
+        <li>这是li元素</li>
+    </ul>
+
+    <ol>
+        <li>这是ol里面的li元素</li>
+        <li>这是ol里面的li元素</li>
+        <li>这是ol里面的li元素</li>
+        <li>这是ol里面的li元素</li>
+    </ol>
+
+
+    <script>
+        // var lis = document.getElementsByTagName("li");
+        // console.log(lis);
+
+        // document.getElementsByTagName()   ==> 从整个页面中获取元素，范围太大了，获取到的元素不精确
+        // box.getElementsByTagName()   ==>  从某一个容器内获取元素，缩小获取元素的范围
+
+        // 获取ul里面的li元素
+
+        // var box2 = document.getElementById("box");  // ul
+        // var ul_lis = box2.getElementsByTagName("li"); // li
+
+        var ul_lis = document.getElementById("box").getElementsByTagName("li"); // li
+        console.log(ul_lis);
+    </script>
+</body>
+</html>

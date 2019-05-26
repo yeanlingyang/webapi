@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+      * {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+      }
+  
+      body {
+          padding-left: 100px;
+      }
+  
+      #imgs {
+          overflow: hidden;
+          margin: 50px 0;
+      }
+  
+      #imgs li {
+          float: left;
+          margin-right: 10px;
+      }
+      </style>
+  </head>
+  
+  <body>
+      <h1>美女相册</h1>
+      <ul id="imgs">
+          <li>
+              <a href="images/1.jpg" title="美女A">
+                  <img src="images/1-small.jpg" alt="">
+              </a>
+          </li>
+          <li>
+              <a href="images/2.jpg" title="美女B">
+                  <img src="images/2-small.jpg" alt="">
+              </a>
+          </li>
+          <li>
+              <a href="images/3.jpg" title="美女C">
+                  <img src="images/3-small.jpg" alt="">
+              </a>
+          </li>
+          <li>
+              <a href="images/4.jpg" title="美女D">
+                  <img src="images/4-small.jpg" alt="">
+              </a>
+          </li>
+      </ul>
+      <!-- 大图 -->
+      <img src="images/placeholder.png" width="400" height="250" alt="" id="bigImg">
+  
+      <!--说明信息-->
+      <p id="des">这是描述信息</p>
+</head>
+<body>
+  <script>
+  //查找对象
+   var ul = document.getElementById("imgs");
+   var as = ul.getElementsByTagName("a");
+   var bigImg = document.getElementById("bigImg");
+   var des =document.getElementById("des");
+   //设置点击事件
+   for(var i = 0;i<as.length;i++) {
+     as[i].onclick =function() {
+
+       bigImg.src=this.href;
+       des.innerText=this.title;
+       return false;
+     }
+   }
+
+  
+  </script>
+</body>
+</html>

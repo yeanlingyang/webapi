@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <input type="button" value="第1张" title="1">
+    <input type="button" value="第2张" title="2">
+    <input type="button" value="第3张" title="3">
+    <input type="button" value="第4张" title="4">
+    <input type="button" value="第5张" title="5">
+    <input type="button" value="第6张" title="6">
+    <br>
+    <img src="images/1.jpg" alt="" width="300" id="img">
+    
+    <script>
+        // 思路：
+        //  1. 找对象（input、img）
+        //  2. 给所有的input注册click
+        //  3. 点击的时候，切换img的src属性
+
+        // 1.
+        var inps = document.getElementsByTagName("input");
+        var pic = document.getElementById("img");
+
+        // 2.
+        for(var i = 0; i < inps.length; i++){
+            inps[i].onclick = function(){
+                // 3.
+
+                /*console.log(this);
+                console.log(this.title);*/
+
+                // 拼接字符串
+                pic.src = "images/"+ this.title +".jpg";
+            }
+        }
+
+        // 套路：把按钮点击后要切换的图片写在title属性上
+    </script>
+</body>
+
+</html>

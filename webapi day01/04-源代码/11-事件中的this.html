@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .red{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="button" value="按钮">
+
+    <script>
+        // 点击按钮，给按钮自己加上red类名
+
+        var inp = document.getElementsByTagName("input")[0];
+
+        inp.onclick = function() {
+
+            // 在事件处理函数中，this指向了当前元素，指向了事件源
+
+            // inp.className = "red";
+            this.className = "red";
+        }
+    </script>
+</body>
+</html>

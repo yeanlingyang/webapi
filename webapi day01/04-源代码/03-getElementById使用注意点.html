@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="box" title="这是个div">哈哈</div>
+    
+    <script>
+
+        // document.getElementById 使用注意点
+
+        // 1 id名称必须要有，而且名字不能写错。没有找到对象，返回null
+        /*var ret = document.getElementById("box");
+        console.log(ret);
+
+        ret.title = "嘿嘿";*/
+
+        // 2. js代码不要放在head标签中，还是建议放在 /body前面，保证能够获取到元素
+        /*var box = document.getElementById("box");
+        console.log(box);
+        box.title = "嘿嘿";*/
+
+        // 3.
+        // id 在页面中是唯一的，有些浏览器是支持 直接使用id来获取元素的
+        //  这种做法不规范，不推荐这么操作
+        console.log(box);
+    </script>
+</body>
+</html>

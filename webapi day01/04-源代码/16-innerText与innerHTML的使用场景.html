@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+    <textarea id="txt" cols="30" rows="10"></textarea>
+    <button id="btn">按钮</button>
+
+    <br>
+    <br>
+    <br>
+    <div id="box" style="padding: 20px; border: 4px solid #ccc;"></div>
+
+    <script>
+        // innerText与innerHTML的使用场景
+
+        // 区别
+        // 如果要识别标签  innerHTML
+        // 不需要识别标签 innerText
+        // 推荐使用 innerText （安全上考虑）
+
+        // 如果设置的内容要识别标签必须要保证你设置的内容不会对网站造成安全问题，可以使用innerHTML
+
+
+        // 1. 找对象（三个都要找）
+        // 2. 给btn 注册click
+        // 3. 获取到txt文本域的内容
+        // 4. 设置给div
+
+        // 1.
+        var txt = document.getElementById("txt");
+        var btn = document.getElementById("btn");
+        var box = document.getElementById("box");
+
+        // 2.
+        btn.onclick = function(){
+            // 获取文本域的内容
+            // console.log(txt.innerText); // error
+            // console.log(txt.value);
+
+            // 设置div的内容
+            box.innerText = txt.value;
+        }
+    </script>
+</body>
+</html>

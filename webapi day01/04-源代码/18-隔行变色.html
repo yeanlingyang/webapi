@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .red{
+            background-color: red;
+        }
+        .green{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <ul id="box">
+        <li>这是li元素</li>
+        <li>这是li元素</li>
+        <li>这是li元素</li>
+        <li>这是li元素</li>
+        <li>这是li元素</li>
+        <li>这是li元素</li>
+        <li>这是li元素</li>
+        <li>这是li元素</li>
+        <li>这是li元素</li>
+        <li>这是li元素</li>
+    </ul>
+
+    <ol>
+        <li>这是ol里面的li元素</li>
+        <li>这是ol里面的li元素</li>
+        <li>这是ol里面的li元素</li>
+        <li>这是ol里面的li元素</li>
+    </ol>
+    
+
+    <script>
+        // var lis = document.getElementsByTagName("li");
+
+        var ul = document.getElementById("box");
+        var lis = ul.getElementsByTagName("li");
+
+        for(var i = 0; i < lis.length; i++){
+            // lis[i].className = "red";
+            if(i % 2 === 0){
+                lis[i].className = "red"
+            }else{
+                lis[i].className = "green";
+            }
+        }
+    </script>
+</body>
+</html>

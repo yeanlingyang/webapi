@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .red{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="button" value="按钮">
+    <input type="button" value="按钮">
+    <input type="button" value="按钮">
+    <input type="button" value="按钮">
+    <input type="button" value="按钮">
+    <input type="button" value="按钮">
+    <input type="button" value="按钮">
+    <input type="button" value="按钮">
+    <input type="button" value="按钮">
+    <input type="button" value="按钮">
+    <input type="button" value="按钮">
+
+    <script>
+        // 思路：
+        //  1. 找对象（所有的input）
+        //  2. 给所有的input注册点击事件（for循环遍历）
+        //  3. 点击的哪一个按钮设置类名为red
+
+        // 1.
+        var inps = document.getElementsByTagName("input");
+
+        // 2.
+
+        // 在事件处理函数中，不能使用 inps[i]
+        // 原因是问题出在了i身上
+        // 在点击的时候，for循环已经结束了，i的值已经变成  inps.length
+
+        for(var i = 0; i < inps.length; i++){
+            // for 循环遍历 是在给每一个按钮注册点击事件
+            // for循环的时候， 事件处理函数没有在执行
+
+
+            // 外面的inps[i] 是没有问题的，因为循环一次，执行inps[i]一次
+            inps[i].onclick = function () {
+                console.log(i);  // 11
+                // inps[11]  ==>  undefined
+                // 3.
+                // error
+                // inps[i].className = "red";
+            }
+        }
+
+        // 循环过后，i是多少
+        console.log("for循环结束了");
+        console.log("for循环结束了， i的值是 " + i);
+
+        // 在事件处理函数中，表示当前元素，只能用this。不能使用 inps[i]
+    </script>
+</body>
+</html>

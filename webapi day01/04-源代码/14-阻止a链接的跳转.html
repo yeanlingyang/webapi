@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <a id="link" href="http://www.baidu.com">百度一下</a>
+
+    <script>
+        // 阻止a链接的跳转
+        // 思路： 给a注册点击事件，在事件处理程序中 return false;
+
+        var link = document.getElementById("link");
+
+        link.onclick = function(){
+            alert(1);
+
+            return false;
+        }
+    </script>
+</body>
+</html>
