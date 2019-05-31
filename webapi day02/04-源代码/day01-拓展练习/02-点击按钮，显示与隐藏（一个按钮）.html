@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: lime;
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="显示" id="btn">
+
+    <div id="box"></div>
+    
+    <script>
+        // 一个 input 控制 div的显示与隐藏
+
+        var btn = document.getElementById("btn");
+        var box = document.getElementById("box");
+
+        btn.onclick = function(){
+            if(this.value === "显示"){
+                //  = 赋值  ==  === 判断是否相等
+
+                // 显示
+                this.value = "隐藏";
+                box.className = "show";
+            }else if(this.value === "隐藏"){
+                // 隐藏
+                this.value = "显示";
+                box.className = "";
+            }
+        }
+    </script>
+</body>
+
+</html>

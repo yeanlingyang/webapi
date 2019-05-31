@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <button id="btn">关灯</button>
+
+    <script>
+        // 1. 找对象（btn、body）
+        // 2. 给btn注册click
+        // 3. 修改body的背景颜色
+
+
+        // 1.
+        var btn = document.getElementById("btn");
+        // var body = document.getElementsByTagName("body")[0];
+
+        // 2.
+        btn.onclick = function(){
+            if (this.innerText === "关灯") {
+                document.body.style.backgroundColor = "#000";
+                this.innerText = "开灯";
+            }else{
+                document.body.style.backgroundColor = "#fff";
+                this.innerText = "关灯";
+            }
+        }
+
+
+    </script>
+</body>
+</html>

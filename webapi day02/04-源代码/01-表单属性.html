@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">禁用</button>
+    <input id="txt" type="text">
+    <!-- <input type="checkbox" checked> -->
+
+    <script>
+
+        // 表单常见的属性
+        // type name value checked selected disabled(禁用)
+        
+        // 布尔类型属性 checked selected disabled
+        //  标签上有这些属性就可以起到对应的效果，不管属性值是什么，不写都可以起到效果
+        // dom对象来说，这些属性的值，是布尔类型（true、 false）
+
+        var txt = document.getElementById("txt");
+        var btn = document.getElementById("btn");
+
+
+        btn.onclick = function(){
+            txt.disabled = true;
+        }
+    </script>
+</body>
+</html>

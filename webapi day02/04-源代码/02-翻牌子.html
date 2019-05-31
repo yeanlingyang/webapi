@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <button>按钮</button>
+    <select id="sel">
+        <option>俊俊</option>        
+        <option>葛志齐</option>        
+        <option>颜秉鑫</option>        
+        <option>瞿庆飞</option>        
+        <option>石家辉</option>        
+        <option>朱明月</option>        
+    </select>
+
+    <script>
+        // 需求：点击按钮，随机让一个option让其选中
+
+        // 思路： 
+        // 1. 找对象（button 、option）
+        // 2. 给button 注册click
+        // 3. 随机一个option， 加 selected属性
+
+        // 1.
+        var btn = document.getElementsByTagName("button")[0];
+        var sel = document.getElementById("sel");
+        var options = sel.getElementsByTagName("option");
+
+        // 2.
+        btn.onclick = function(){
+            // 3.
+            // 随机下标，范围是 0 - 5
+            var idx = parseInt(Math.random() * options.length);
+            // console.log(idx);
+            options[idx].selected = true;
+        }
+    </script>
+</body>
+</html>

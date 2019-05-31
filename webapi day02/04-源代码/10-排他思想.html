@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+
+    <script>
+        /*var btns = document.getElementsByTagName("button");
+
+        for(var i = 0; i < btns.length; i++){
+            btns[i].onclick = function(){
+                // 实现点谁谁变红
+                this.style.backgroundColor = "red";
+            }
+        }*/
+
+
+        // 需求： 点击的时候，只能有一个按钮红色的
+
+        // 排他思想：
+        //  1. 干掉所有人
+        //  2. 复活我自己
+
+
+        // 在这个案例中
+        // 1. 干掉所有人  ==>  把所有的按钮的红色去掉
+        // 2. 复活我自己  ==>  把当前点击的那个元素 设置红色
+
+
+        var btns = document.getElementsByTagName("button");
+
+        for(var i = 0; i < btns.length; i++){
+            btns[i].onclick = function(){
+                // 排他
+
+                // 1. 干掉所有人  ==>  把所有的按钮的红色去掉
+                for(var i = 0; i < btns.length; i++){
+                    btns[i].style.backgroundColor = "";
+                }
+
+                // 2. 复活我自己  ==>  把当前点击的那个元素 设置红色
+                this.style.backgroundColor = "red";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .wrap {
+      width: 300px;
+      margin: 100px auto 0;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      border: 1px solid #c0c0c0;
+      width: 300px;
+    }
+
+    th,
+    td {
+      border: 1px solid #d0d0d0;
+      color: #404060;
+      padding: 10px;
+    }
+
+    th {
+      background-color: #09c;
+      font: bold 16px "微软雅黑";
+      color: #fff;
+    }
+
+    td {
+      font: 14px "微软雅黑";
+    }
+
+    tbody tr {
+      background-color: #f0f0f0;
+      text-align: center;
+    }
+
+    tbody tr:hover {
+      cursor: pointer;
+      background-color: #fafafa;
+    }
+  </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" id="j_cbAll" />
+                    </th>
+                    <th>菜名</th>
+                    <th>饭店</th>
+                </tr>
+            </thead>
+            <tbody id="j_tb">
+                <tr>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>红烧肉</td>
+                    <td>田老师</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>西红柿鸡蛋</td>
+                    <td>田老师</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>红烧狮子头</td>
+                    <td>田老师</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>日式肥牛</td>
+                    <td>田老师</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <script>
+        // 功能：
+        //  1. 全选可以控制下面四个input的选中状态
+        //  思路： 
+        //  1.1 找对象（全选、下面四个input）
+        //  1.2 给全选注册click
+        //  1.3 修改下面四个input的选中状态和 全选的选中状态一致
+
+        // 1.1
+        var all = document.getElementById("j_cbAll");
+        var tbody = document.getElementById("j_tb");
+        var inps = tbody.getElementsByTagName("input");
+
+        all.onclick = function(){
+          // 获取到全选的选中状态
+          // console.log(all.checked);
+
+          // 设置下面四个input的选中状态
+          for (var i = 0; i < inps.length; i++) {
+            inps[i].checked = all.checked;
+          }
+        }
+
+
+        //  2. 下面四个input可以控制全选的选中状态
+
+        for(var i = 0; i < inps.length; i++){
+          inps[i].onclick = function(){
+            // 假设成立法
+
+            // 1. 假设一个结果
+            var flag = true; // 假设四个input都被选中了
+
+            // 2. 推翻假设 （打脸）
+            for(var i = 0; i < inps.length; i++){
+              // if(inps[i].checked === false){
+              // 优化地方01
+              if(!inps[i].checked){
+                // 这一个没有被选中 假设错误
+                flag = false;
+                break;
+              }
+            }
+
+            // console.log("flag  " + flag);
+
+            /*if (flag) { // true
+              // 全选要选中
+              all.checked = true;
+            }else{ // false
+              // 假设错误，全选不要被选中
+              all.checked = false;
+            }*/
+
+            // 最优写法
+            all.checked = flag;
+
+            // 三元优化
+            // all.checked = flag ? true : false;
+
+          }
+        }
+
+
+        // 表单属性：
+        //  value
+        //  checked
+        //  selected 
+        //  disabled
+    </script>
+</body>
+
+</html>

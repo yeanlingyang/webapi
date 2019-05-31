@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <input type="button" value="切换" id="btn"><br>
+    <img src="images/1.jpg" width="300" id="img">
+    
+    <script>
+    // 需求：切换图片，切换的图片是 1.jpg、01.gif、02.gif、2.jpg、3.jpg
+    //       如何实现切换
+
+    // 数组中记录了需要展示的每一张图片路径
+    var arr = ["images/1.jpg", "images/01.gif", "images/02.gif", "images/2.jpg", "images/5.jpg"];
+
+    var count = 0; // 当前的图片的下标
+
+    var btn = document.getElementById("btn");
+    var img = document.getElementById("img");
+
+    btn.onclick = function(){
+        count++;
+
+        if(count >= arr.length){
+            count = 0;
+        }
+
+        img.src = arr[count];
+    }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: #f99;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="box" class="demo" title="demo">哈哈,这是内容</div>
+
+    <script>
+        // 操作样式： 
+        //  1. 通过类名来操作 ==> 需要提前定义好类名，麻烦
+        //  2. style操作行内样式  ==> 灵活
+        
+            
+        // dom对象中有对应的style属性
+        // style属性值是个对象，对象里面是该元素所有的行内样式
+        var box = document.getElementById("box");
+        // console.dir(box);
+        // console.log(box.style);
+
+        // 获取行内样式
+        // console.log(box.style.width);
+        // console.log(box.style.height);
+        // // 对于有 - 的单词，转成 驼峰式写法
+        // console.log(box.style.backgroundColor);
+
+
+        // js来设置行内样式
+        // px 单位别落下了
+        box.style.width = "200px";
+        box.style.height = "200px";
+        box.style.backgroundColor = "red";
+        box.style.fontSize = "50px";
+
+
+        // 小结：
+        //  style来操作样式 （行内）可以获取也可以设置
+        //    注意点：  
+        //      1. 对于有-的单词，注意些驼峰式
+        //      2. 对于宽高设置大小的时候，px别落下，不起效果
+        //      
+        //      获取的只是个行内样式
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+
+    <script>
+        // 获取当前元素的下标
+
+        var btns = document.getElementsByTagName("button");
+
+        /*for (var i = 0; i < btns.length; i++) {
+            // 使用js的方法给按钮添加title属性，用来记录当前按钮的下标
+            btns[i].title = i;
+        }
+
+        for (var i = 0; i < btns.length; i++) {
+            // 给按钮注册点击事件
+            btns[i].onclick = function(){
+                console.log(this.title);
+            }
+        }*/
+
+        // 合并for循环
+        /*for (var i = 0; i < btns.length; i++) {
+            // 使用js的方法给按钮添加title属性，用来记录当前按钮的下标
+            // 缺点： 占用了title属性，而且鼠标移入上去，能够看见下标
+            btns[i].title = i;
+
+            // 给按钮注册点击事件
+            btns[i].onclick = function(){
+                console.log(this.title);
+            }
+        }*/
+
+        // 最优写法
+        for (var i = 0; i < btns.length; i++) {
+            // index 索引（下标）
+            // 存下标
+            btns[i].index = i;
+
+            btns[i].onclick = function(){
+                // 取下标
+                console.log(this.index);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        把下标存到按钮的title属性上 
+        缺点： 手动添加title属性，比较麻烦
+    -->
+    <button title="0">按钮</button>
+    <button title="1">按钮</button>
+    <button title="2">按钮</button>
+    <button title="3">按钮</button>
+    <button title="4">按钮</button>
+    <button title="5">按钮</button>
+    <button title="6">按钮</button>
+    <button title="7">按钮</button>
+    <button title="8">按钮</button>
+    <button title="9">按钮</button>
+
+    <script>
+        // 获取当前元素的下标
+
+        var btns = document.getElementsByTagName("button");
+
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].onclick = function(){
+                // 从按钮上获取到下标
+                console.log(this.title);
+            }
+        }
+    </script>
+</body>
+</html>

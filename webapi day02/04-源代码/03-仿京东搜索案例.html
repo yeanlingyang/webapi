@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<input type="text" id="txt" value="蚕丝被">
+
+<script>
+    // 新的事件
+    // 获取焦点事件   onfocus
+    // 失去焦点事件   onblur
+
+    var txt = document.getElementById("txt");
+    txt.onfocus = function () {
+        // console.log("input 获取了焦点");
+
+        // 当输入框的内容为蚕丝被的时候
+        if(this.value === "蚕丝被"){
+            this.value = "";
+        }
+    }
+    txt.onblur = function () {
+        // console.log("input 失去了焦点");
+
+        // 当输入框的内容为空
+        if(this.value === ""){
+            this.value = "蚕丝被";
+        }
+    }
+</script>
+
+</body>
+</html>

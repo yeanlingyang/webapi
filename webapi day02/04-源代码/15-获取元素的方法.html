@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <ul>
+        <li class="dmeo">这是li</li>
+        <li class="dmeo">这是li</li>
+        <li class="dmeo">这是li</li>
+        <li class="dmeo">这是li</li>
+        <li class="dmeo">这是li</li>
+        <li class="dmeo">这是li</li>
+        <li class="dmeo">这是li</li>
+        <li class="dmeo">这是li</li>
+    </ul>
+    
+    <input type="text" name="user">
+    <input type="text" name="user">
+    <input type="text" name="user">
+    <input type="text" name="pass">
+
+    <div id="box">哈哈哈
+        
+        <ol>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ol>
+    
+    </div>
+
+    <script>
+
+        // 根据id来获取元素
+        // document.getElementById(id)
+
+        // 根据标签名来获取元素
+        // document.getElementsByTagName(name)
+            
+        // 根据类名来获取元素
+        // 参数： 字符串类型的类名
+        // 返回值： 是伪数组
+        // document.getElementsByClassName(className);
+
+        /*var lis = document.getElementsByClassName("dmeo");
+        console.log(lis);*/
+
+
+        // 根据name属性来获取元素， 仅限于表单元素使用的
+        // 参数： name属性
+        // 返回值： 伪数组
+        // document.getElementsByName(tagname)
+
+        /*var inps = document.getElementsByName("user");
+        console.log(inps);*/
+
+
+        // query : 查询
+        // Selector： 选择器
+        // 根据css选择器来查询元素
+        // 参数： css选择器
+
+        // 获取元素，获取一个，第一个
+        // document.querySelector(selectors);
+
+        // 获取到所有的元素，返回值是个伪数组
+        // document.querySelectorAll(selectors);
+
+
+        /*var li = document.querySelector(".dmeo");
+        var lis = document.querySelectorAll(".dmeo");
+
+        console.log(li);
+        console.log(lis);*/
+
+
+        /*console.log(document.querySelector("#box"));
+        console.log(document.querySelectorAll("#box"));
+
+        // getElementById 不需要写#
+        document.getElementById("box");*/
+
+        // console.log(document.querySelectorAll("#box li"));
+
+
+
+        // 小结；
+        //  1. 通过id   document.getElementById(id)               返回值： 找到的元素
+        //  2. 通过标签名   document.getElementsByTagName(name)   返回值：； 伪数组
+        //  3. 通过类名:   document.getElementsByClassName(className)  返回值： 伪数组
+        //  4. 通过name属性  document.getElementsByName(name)      返回值： 伪数组
+        //  5. 根据css选择器来获取
+            // document.querySelector()   返回值：找到第一个元素
+            // document.querySelectorAll()   返回值： 伪数组
+    </script>
+</body>
+</html>

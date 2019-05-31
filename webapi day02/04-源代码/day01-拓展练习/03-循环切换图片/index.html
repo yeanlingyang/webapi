@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <input type="button" value="切换" id="btn">
+    <br>
+    <img src="images/1.jpg" width="300" id="img">
+
+    <script>
+    // 需求：点击按钮，让图片循环切换，从第1张切换到第2张
+    //       当切换到第6张的时候，变成第1张
+
+    var btn = document.getElementById("btn");
+    var img = document.getElementById("img");
+
+    var count = 1; // 记录当前展示的图片是哪一张
+
+    btn.onclick = function(){
+        // 展示下一张
+        count++;
+
+        // 当count++完之后，对count 进行判断
+        if (count >= 7) {
+            count = 1;
+        }
+        img.src = "images/"+ count +".jpg";
+    }
+    </script>
+</body>
+
+</html>
