@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+      body{
+        height: 4000px;
+      }
+  </style>
+</head>
+<body>
+
+<img src="images/tianshi.gif" alt="">
+
+<script>
+    // 需求： img跟随鼠标移动
+
+    // 鼠标新的事件
+    // onmousemove   鼠标移动的时候触发
+
+    /*document.onmousemove = function () {
+        console.log(1);
+    }*/
+
+
+    // 修改img的left、top
+    // left、top的值就是鼠标的位置
+
+    var ts = document.querySelector("img");
+
+    document.onmousemove = function (event) {
+        // 注意： 要想left、top起到效果，一定要设置定位
+        ts.style.position = "absolute";
+        ts.style.left = event.pageX + "px";
+        ts.style.top = event.pageY + "px";
+    }
+</script>
+</body>
+</html>

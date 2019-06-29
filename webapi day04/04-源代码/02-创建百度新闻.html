@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <button>生成</button>
+    <div style="width: 500px; height: 500px; border: 3px solid #ccc">
+       <!-- <ul>
+           <li>文本</li>
+           <li>文本</li>
+           <li>文本</li>
+           <li>文本</li>
+       </ul> -->
+    </div>
+
+    <script>
+        // 自己模拟数据
+        var arr = [
+            "世园会创意视频：园·圆",
+            "习近平会见捷克总统  吉布提总统  巴基斯坦总理  专题",
+            "高峰论坛：刷新中国经济“信心指数”",
+            "【央视快评】以创新理念，绘制精谨细腻“工笔画”",
+            "建设美丽中国 记住这些数字  世园会",
+            "从“废塑加工场”到“创业梦工厂”  壮丽70年"
+        ]
+
+        // 思路：
+        //  1. 找对象（btn、div）
+        //  2. 给btn注册click
+        //  3. 创建ul，把ul添加到div内
+        //  4. 根据arr数组长度去创建li，给li设置内容，数组里面的每一项
+        //  5. 把创建的li添加到ul中
+        //  6. 隔行变色
+        //  7. 限制ul的数量，只能有一个
+
+        // 1.
+        var btn = document.querySelector("button");
+        var box = document.querySelector("div");
+
+        // 2.
+        btn.onclick = function () {
+
+            if(box.children.length !== 0){
+                // 已经有了ul
+
+                // 第一种写法
+                // return;  // 后面代码不执行了
+
+                // 第二种写法
+                // 把ul给移除掉
+                box.removeChild(box.children[0]);  // box.children[0] ==> ul
+            }
+
+            // 3.
+            var newUl = document.createElement("ul");
+            box.appendChild(newUl);
+
+            // 4.
+            for(var i = 0; i < arr.length; i++){
+                var newLi = document.createElement("li");
+                newLi.innerText = arr[i];
+                newUl.appendChild(newLi);
+            }
+
+
+            // 获取到所有的li元素
+            var lis = newUl.children;
+            for (var i = 0; i < lis.length; i++) {
+                if(i % 2 === 0){
+                    lis[i].style.backgroundColor = "#ccc";
+                }else{
+                    lis[i].style.backgroundColor = "#999";
+                }
+            }
+        }
+
+
+    </script>
+</body>
+</html>

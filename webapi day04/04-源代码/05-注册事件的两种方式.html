@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        
+        // 注册事件的两种方式
+
+        // 1. on + 事件名
+        //  缺陷：同一个元素注册同一个事件多次，后面注册的事件会覆盖前面注册的事件。
+
+        /*document.onclick = function () {
+            alert(1)
+        }
+
+        document.onclick = function () {
+            alert(2)
+        }*/
+
+
+        // 2. addEventListener  添加事件监听 ==> 注册事件
+        // 参数：
+        //  event： 注册的事件名 click， 不带on
+        //  listener： 事件处理函数
+        //  useCapture： 你不用管，可省略
+        // addEventListener(event, listener, useCapture)
+        // 使用 addEventListener 注册事件不存在覆盖问题
+
+        document.addEventListener("click", function(){
+            alert(3)
+        });
+
+        function fn(){
+            alert(4);
+        }
+        document.addEventListener("click", fn)
+
+
+        // 小结：
+        //  注册事件的两种写法
+        //  1. on + 事件名  ==>  覆盖问题
+        //  2. addEventListener   ==>  没有覆盖问题
+        //      事件名 ，不含on
+        //      事件处理函数
+    </script>
+</body>
+</html>

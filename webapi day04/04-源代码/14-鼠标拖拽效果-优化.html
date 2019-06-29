@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: #f99;
+            cursor: move;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+
+    <script>
+
+        var box = document.querySelector("#box");
+
+        // 解决：
+        //  在div移动的时候，把鼠标的位置 - 鼠标摁下的时候，鼠标在div内的距离
+
+        // 需要计算：
+        //  鼠标在div上摁下的时候，鼠标在div内的距离
+        //       1. 鼠标在div上摁下的时候，获取鼠标的位置  pageX
+        //       2. div到页面左边的距离
+
+        box.onmousedown = function (event) {
+            // 两个函数内的event 不是相同的。
+
+            var x = event.pageX - box.offsetLeft;  // box.offsetLeft 获取box到页面左边的距离
+            var y = event.pageY - box.offsetTop;
+
+            document.onmousemove = function (event) {
+                // error：onmousemove鼠标移动的 event.pageX  和 onmousedown鼠标 event.pageX  不是相同的，不能直接抵消
+                // box.style.left = event.pageX - (event.pageX - box.offsetLeft) + "px";
+
+                box.style.left = event.pageX - x + "px";
+                box.style.top = event.pageY - y + "px";
+            }
+        }
+
+        box.onmouseup = function () {
+            // 当鼠标弹起的时候，把鼠标移动事件给解绑掉
+            document.onmousemove = null;
+        }
+    </script>
+</body>
+
+</html>

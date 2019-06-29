@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width= , initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+  
+      ul {
+        list-style: none;
+      }
+  
+      .box {
+        width: 650px;
+        margin: 100px auto;
+        border: 1px solid #000;
+        padding: 20px;
+      }
+  
+      textarea {
+        width: 450px;
+        height: 160px;
+        outline: none;
+        resize: none;
+      }
+  
+      ul {
+        width: 450px;
+        padding-left: 80px;
+      }
+  
+      ul li {
+        line-height: 25px;
+        border-bottom: 1px dashed #cccccc;
+      }
+  
+      input {
+        float: right;
+      }
+    </style>
+  </head>
+  <body>
+  
+  <div class="box" id="weibo">
+    <span>微博发布</span>
+    <textarea name="" id="txt" cols="30" rows="10"></textarea>
+    <button id="btn">发布</button>
+    <button id="btn2">一键删除</button>
+    <ul id="ul"></ul>
+  </div>
+  <script>
+  var box =document.querySelector(".box");
+  var txt =document.querySelector("#txt");
+  var btn =document.querySelector("#btn");
+  var ul = document.querySelector("#ul")
+  var btn2 = document.querySelector("#btn2")
+  btn.onclick = function() {
+    var val = txt.value.trim();
+    txt.value = "";
+    if(val.length!==0) {
+      var li = document.createElement("li");
+      li.innerText=val;
+
+      //新建删除按钮
+      var newBtn= document.createElement("button");
+      newBtn.innerText="删除 ";
+      newBtn.style.float="right";
+
+      //设置点击事件、
+      newBtn.onclick=function() {
+        ul.removeChild(this.parentNode);
+      }
+      li.appendChild(newBtn);
+      ul.insertBefore(li,ul.firstElementChild);
+      
+      // var lis = ul.children
+      // btn2.onclick=function() {
+      //   for(var i = lis.length-1;i>=0;i--){
+      //       ul.removeChild(lis[i]);
+      //   }
+      // }
+
+
+      var lis = ul.querySelectorAll("li");
+      btn2.onclick=function() {
+        for(var i = 0;i<lis.length;i++) {
+          ul.removeChild(lis[i]);
+      }
+      }
+     
+    }
+  }
+  
+  
+  
+  </script>
+  
+</body>
+</html> 

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        
+        // 解绑事件
+
+        // 1. 使用on注册的事件如何解绑
+        /*document.onclick = function () {
+            alert(1);
+
+            // 点击一次之后在解绑事件
+            document.onclick = null;
+        }*/
+
+        // 让点击事件只能点击一次，在点击没有效果了  ==> 解绑事件
+
+        // 解绑事件语法：
+        //  事件源.on+事件名 = null;
+        // document.onclick = null;
+
+
+
+        // 2. 使用addEventListener 注册的事件如何解绑
+
+
+        // 注意： 下面这种注册事件的写法，使用removeEventListener是无法解绑的，函数是匿名函数，是无法解绑的。
+        /*document.addEventListener("click", function(){
+            alert(3)
+        });*/
+
+
+        // 只有下面这种注册事件写法才可以被removeEventListener是解绑掉
+        function fn(){
+            alert(4);
+
+            // 这样是点击之后，才会解绑的
+            document.removeEventListener("click", fn);
+        }
+        document.addEventListener("click", fn);
+
+        // 解绑addEventListener 注册的事件
+
+        // error: 下面写法，只能解绑on注册的事件
+        // document.onclick = null;
+
+        // error: addEventListener注册事件不存在覆盖问题
+        // document.addEventListener("click", null);
+
+
+        // 解绑 addEventListener注册的事件，需要使用 removeEventListener 来解绑
+        // removeEventListener(event, listener, useCapture);
+        //  event: 解绑的事件名
+        //  listener： 解绑的事件处理函数
+        //  useCapture： 不用管
+
+        
+        /*document.removeEventListener("click", function () {
+            alert(3)
+        })*/
+
+        
+
+        // 小结：
+        //  解绑事件的两种写法
+        //  1. on + 事件名  ==>   on+事件名 = null;
+        //  2. addEventListener 注册的事件  ==> removeEventListener()
+        //      解绑注意点：addEventListener 注册的事件 事件处理函数不能是匿名函数，否则是无法解绑的。
+
+        // 要想注册的事件能够被解绑掉
+        // 下面这种写法才可以解绑
+        /*function foo(){
+            console.log(123);
+        }
+        document.addEventListener("click", foo);*/
+    </script>
+</body>
+</html>
