@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="box" style="width: 400px; padding: 20px; border: 4px solid #ccc;">
+        <p>这是p锻炼</p>        
+        <span>元素</span>
+    </div>
+
+    <h1>这是div外面的h1</h1>
+
+    <script>
+        // 添加节点
+        // 作用： 可以添加子节点到任何指定的位置
+        // parent : 由父元素调用
+        // 参数：
+        //  newChild： 添加谁
+        //  refChild： 在谁前面
+        //  这两个参数必须都写上，否则会报错
+        // parent.insertBefore(newChild, refChild)
+
+        var box = document.querySelector("#box");
+        var h1 =  document.querySelector("h1");
+        // var span =  document.querySelector("span");
+
+        // box.insertBefore(h1, box.lastElementChild);
+        // box.insertBefore(h1, box.firstElementChild);
+        // box.insertBefore(h1, box.children[0]);
+
+
+        // 第二个参数如果写null、undefined，insertBefore() 方法的效果等同于 appendChild
+        box.insertBefore(h1, undefined);
+
+
+        // 小结：
+        //  添加节点
+        //      1. appendChild()  添加到父元素的里面最后面
+        //      2. insertBefore()  可以指定添加在谁前面
+        //          两个参数都要写
+
+        //  共同点：
+        //      对于页面中本来就存在的元素，是剪贴的效果
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    用户名：<input type="text" id="txtName"><span></span><br>
+
+    密码：<input type="password" id="txtPwd"><span></span><br>
+    <script>
+
+        // 新的事件
+        //  onkeydown：  当键盘摁下去的时候触发
+        //  onkeyup   当键盘弹起的时候触发
+
+        var txtName = document.querySelector("#txtName");
+
+        /*txtName.onkeydown = function () {
+            // console.log("键盘按下去了");
+
+            // 在onkeydown 事件中获取输入框的值，获取的值上一次的，不是完整的内容
+            console.log(this.value);
+        }*/
+
+        txtName.onkeyup = function () {
+            // console.log("键盘弹起来了");
+            // 获取输入框的内容，在onkeyup事件中来获取，获取的内容是完整的
+            // console.log(this.value);
+
+            // 判断输入框的内容的长度是否符合2-6位之间
+            if (this.value.length < 2 || this.value.length > 6) {
+                // 不符合要求
+                this.nextElementSibling.innerText = "用户名必须是2-6位之间";
+                this.nextElementSibling.style.color = "red";
+            }else{
+                // 符合要求
+                this.nextElementSibling.innerText = "正确";
+                this.nextElementSibling.style.color = "green";
+            }
+        }
+    </script>
+</body>
+
+</html>

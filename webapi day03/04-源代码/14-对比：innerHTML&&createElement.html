@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="box" style="width: 500px;height: 500px; border: 3px solid #ccc;"></div>
+    
+
+    <script>
+
+        // innerHTML 创建
+
+        var box = document.querySelector("#box");
+
+       /* var start = new Date();
+        for (var i = 0; i < 1000; i++) {
+            box.innerHTML = box.innerHTML + "<button>按钮</button>";
+        }
+        var end = new Date();
+        console.log(end - start);  // 1441ms*/
+
+        // 不要在for循环里面使用innerHTML,这样会造成性能低
+        var start = new Date();
+        var str = "";
+        for (var i = 0; i < 1000; i++) {
+            str += "<button>按钮</button>";
+        }
+        
+        // 在for循环的外面一次性设置给box
+        box.innerHTML = str;
+        var end = new Date();
+        console.log(end - start);
+
+
+        // createElement
+        /*var start = new Date();
+        for (var i = 0; i < 1000; i++) {
+            var btn = document.createElement("button");
+            btn.innerText = "按钮";
+
+            box.appendChild(btn);
+        }
+        var end = new Date();
+        console.log(end - start); // 3ms*/
+
+    </script>
+</body>
+</html>

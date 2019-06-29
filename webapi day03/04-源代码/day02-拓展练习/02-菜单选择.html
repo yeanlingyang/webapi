@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    #list li {
+      list-style-type: none;
+      width: 80px;
+      height: 30px;
+      line-height: 30px;
+      background-color: beige;
+      text-align: center;
+      float: left;
+      margin-left: 5px;
+    }
+    
+    #list li.current {
+      background-color: burlywood;
+    }
+    
+    #list li a {
+      text-decoration: none;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+<div id="menu">
+  <ul id="list">
+    <li class="current">
+      <a href="javascript:void(0);">首页</a>
+    </li>
+    <li><a href="javascript:void(0);">播客</a></li>
+    <li><a href="javascript:void(0);">博客</a></li>
+    <li><a href="javascript:void(0);">相册</a></li>
+    <li><a href="javascript:void(0);">关于</a></li>
+    <li><a href="javascript:void(0);">帮助</a></li>
+  </ul>
+</div>
+
+<script>
+  // 需求：实现点击菜单排他效果
+  //    当前的菜单li 有 current 类名
+
+  // 排他 current 类名
+
+  // a链接的href属性  javascript:void(0);  这样能够阻止a链接跳转
+  // javascript:; 是一个js伪协议，表示a链接不去跳转，执行js代码
+  // void(0)  ==> 表示不做任何事情
+
+
+  // 1. 找对象（li）
+  var lis = document.querySelectorAll("#list li");
+
+  for (var i = 0; i < lis.length; i++) {
+    lis[i].onclick = function () {
+      
+      for (var i = 0; i < lis.length; i++) {
+        lis[i].className = "";
+      }
+      this.className = "current";
+    }
+  }
+
+</script>
+</body>
+</html>

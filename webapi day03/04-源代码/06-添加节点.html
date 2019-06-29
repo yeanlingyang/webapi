@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="box" style="width: 400px; padding: 20px; border: 4px solid #ccc;">
+        <p>这是p锻炼</p>        
+        <span>元素</span>
+    </div>
+
+    <h1>这是div外面的h1</h1>
+
+    <script>
+        // 添加节点
+        
+        // 作用： 把子节点添加到父节点内部的最后面
+        // parent : 由父元素来调用该方法
+        // 参数： newChild ，添加的子节点
+        // parent.appendChild(newChild)
+
+        var box = document.querySelector("#box");
+        var h1 = document.querySelector("h1");
+
+        box.appendChild(h1);
+
+        // 注意：
+        // 对于页面中本来就存在的元素，添加节点是一个剪贴的效果
+
+    </script>
+</body>
+</html>

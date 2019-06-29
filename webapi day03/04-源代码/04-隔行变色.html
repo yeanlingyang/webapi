@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="box">
+        <p>刚才献丑了</p>
+        <p>刚才献丑了</p>
+        <p>刚才献丑了</p>
+        <div>都是俊俊惹的祸</div>
+        <div>都是俊俊惹的祸</div>
+        <div>都是俊俊惹的祸</div>
+        <div>都是俊俊惹的祸</div>
+    </div>
+
+    <script>
+        var box = document.querySelector("#box");
+        var childs = box.children;
+
+        for (var i = 0; i < childs.length; i++) {
+            if(i % 2 == 0){
+                childs[i].style.backgroundColor = "red";
+            }else{
+                childs[i].style.backgroundColor = "yellow";
+            }
+        }
+
+    </script>
+</body>
+</html>

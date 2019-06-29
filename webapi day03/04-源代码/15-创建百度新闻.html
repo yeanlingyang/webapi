@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <button>生成</button>
+    <div style="width: 500px; height: 500px; border: 3px solid #ccc">
+       
+    </div>
+
+    <script>
+        // 思路：
+        //  1. 找对象（button、div）
+        //  2. button 注册click
+        //  3. 创建 ul,还需要添加到div内
+        //  4. 根据arr数组来创建li，设置li的内容，数组里面的每一条新闻
+        
+        var arr = [
+            '习近平在一带一路论坛开幕式上的演讲（全文）',
+            '习近平出席清华向普京授名誉博士学位仪式  会谈',
+            '绘就高质量共建"一带一路"的"工笔画" 专题',
+            '新纪录！习近平一天会见了14位领导人  壮丽70年',
+            '《“一带一路”上的智者》（上集） 世园会',
+            '62年、6年？“一带一路”告诉你数字背后的意义'
+        ]
+
+
+        // 1.
+        var btn = document.querySelector("button");
+        var box = document.querySelector("div");
+
+
+        // 2.
+        btn.onclick = function () {
+            // 3.
+            var ul = document.createElement("ul");
+            box.appendChild(ul);
+
+            // 4,
+            for(var i = 0; i < arr.length; i++){
+                var li = document.createElement("li");
+                li.innerText = arr[i];
+
+                // 千万别落下添加到ul中
+                ul.appendChild(li);
+            }
+
+            // 实现隔行变色
+            var lis = ul.children;
+
+            for (var i = 0; i < lis.length; i++) {
+                if(i % 2 == 0){
+                    lis[i].style.backgroundColor = "red";
+                }else{
+                    lis[i].style.backgroundColor = "yellow";
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

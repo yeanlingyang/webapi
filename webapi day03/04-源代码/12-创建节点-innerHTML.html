@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="box">
+        
+    </div>
+
+    <script>
+        // innerHTML ==> 可以识别标签
+        // 缺点：
+        //  1. 存在安全问题
+        //  2. 慎用，会造成性能问题
+
+        var box = document.querySelector("#box");
+        box.innerHTML = "<button>按钮</button>";
+    </script>
+</body>
+</html>

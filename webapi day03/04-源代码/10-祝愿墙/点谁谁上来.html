@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 400px;
+            height: 400px;
+            position: absolute;
+        }
+        .one{
+            background-color: #f99;
+        }
+        .two{
+            background-color: green;
+            margin: 100px;
+        }
+        .three{
+            background-color: yellow;
+            margin: 200px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="one">one</div>
+    <div class="two">two</div>
+    <div class="three">three</div>
+
+    <script>
+        var divs = document.querySelectorAll("div");
+
+        var count = 0; // 表示当前点击的div的层级
+
+        for (var i = 0; i < divs.length; i++) {
+            divs[i].onclick = function () {
+                // 有点小问题
+                /*for (var i = 0; i < divs.length; i++) {
+                    divs[i].style.zIndex = 1;
+                }
+                this.style.zIndex = 999;*/
+
+                // 正确的做法
+                count++;
+                this.style.zIndex = count;
+            }
+        }
+    </script>
+</body>
+</html>

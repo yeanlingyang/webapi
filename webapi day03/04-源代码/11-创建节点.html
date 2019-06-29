@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="box" style="width: 400px; padding: 20px; border: 4px solid #ccc;">
+        <p>这是p锻炼</p>        
+        <span>元素</span>
+    </div>
+
+    <button id="btn">按钮</button>
+
+    <script>
+        // 需要手动创建h1标签，将其添加到div内
+
+        // 创建节点
+        // 
+        // 1. document.write()  ==> 基本不用
+        //  缺点：
+        //      1. 存在覆盖问题
+        //      2. 只能往document上写入内容
+        document.write("<h1>哈哈</h1>");
+
+        var btn = document.querySelector("#btn");
+        btn.onclick = function () {
+            document.write("<h2>这是新增的</h2>");
+        }
+    </script>
+</body>
+</html>

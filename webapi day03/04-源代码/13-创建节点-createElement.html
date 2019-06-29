@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 作用： 在内存中创建节点
+        // 参数： 字符串类型的标签名
+        // document.createElement(tagName)
+
+        var button = document.createElement("button");
+
+        button.innerText = "按钮";
+        button.className = "aa";
+        button.onclick = function() {
+            alert("哈哈")
+        }
+
+        // 创建出来的节点是在内存中，还需要添加到页面中才能看到
+        document.body.appendChild(button);
+
+        console.log(button);
+    </script>
+</body>
+</html>

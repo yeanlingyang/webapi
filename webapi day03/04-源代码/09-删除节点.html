@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    
+    <ul id="box">
+        <!-- 买一款 -->
+        <li>奔驰</li>
+        <li>宝马</li>
+        <li>奥拓</li>
+        <li>mobile</li>
+    </ul>
+
+    <script>
+        // 点谁删除谁
+
+        // 作用： 移除节点
+        // 参数： child 就是需要删除的节点
+        // parent.removeChild(child)
+
+        var lis = document.querySelectorAll("#box li");
+
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].onclick = function () {
+                // 删除的那个 ==> this
+
+                // error
+                // this.removeChild();
+
+                this.parentNode.removeChild(this);
+            }
+        }
+
+
+        // display: none; 仅仅是隐藏了元素，dom树还存在
+        // removeChild：  从dom树干掉了
+
+
+
+    </script>
+</body>
+</html>

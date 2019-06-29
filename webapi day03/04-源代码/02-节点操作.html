@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    
+    <ul id="box">
+        <!-- 买一款 -->
+        <li>奔驰</li>
+        <li>宝马</li>
+        <li>奥拓</li>
+        <li>mobile</li>
+    </ul>
+
+
+    <script>
+
+        // dom： 文档对象模型 （dom树）
+        // dom树的好处： 方便找亲戚
+
+
+        // 找孩子节点
+
+            
+        // 获取ul里面所有的子节点
+
+        // childNodes: 获取元素所有的子节点
+        // children:  获取元素的所有的子元素
+        // firstChild: 获取元素的第一个子节点
+        // firstElementChild   获取元素的第一个子元素  ==> children[0]
+        // lastChild  : 获取元素的最后一个子节点 
+        // lastElementChild:   获取元素的最后一个子元素 ==> children[children.length-1]
+
+        var ul = document.querySelector("#box");
+        // console.log(ul.childNodes);
+        // console.log(ul.children);
+        // console.log(ul.firstChild);
+        // console.log(ul.firstElementChild);
+        // console.log(ul.lastChild);
+        // console.log(ul.lastElementChild);
+
+
+        console.log(ul.children[0]);
+        console.log(ul.children[ul.children.length - 1]);
+
+        // 小结：
+        //  找孩子  元素
+        //   1. children
+        //   2. firstElementChild
+        //   3. lastElementChild
+    </script>
+</body>
+</html>

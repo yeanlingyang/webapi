@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="box" title="abc" class="demo" aa="bb">哈哈</div>
+
+    <script>
+        // 固有属性： 标签本来就有的属性  src alt title  id class
+        // 自定义属性： 不是固有属性
+        // 作用： 把数据存储到自定义属性上
+
+        var box = document.querySelector("#box");
+        // console.dir(box);
+
+        // 标签中的属性和dom对象中的属性是一一对应的（仅限于固有属性）
+
+        /*console.log(box.title);
+        console.log(box.id);
+        console.log(box.aa);  // undefined*/
+
+
+        // 属性操作方法（只要是标签中的属性，都可以操作，不管是固有的还是自定义的属性都可以操作）
+        // getAttribute()   获取属性
+        //   参数： 字符串类型的属性名
+        // setAttribute(name, value)
+        //  name: 设置的属性名
+        //  value： 设置的属性值
+        // removeAttribute(name)
+        //  name: 需要移除的属性名
+
+        /*box.setAttribute("aa", "cc");
+        box.setAttribute("title", "demo");
+        box.setAttribute("class", "demo2");*/
+
+        box.removeAttribute("title");
+        box.removeAttribute("aa");
+
+
+
+       /* console.log(box.getAttribute("aa"));
+        console.log(box.getAttribute("title"));
+
+        // 使用getAttribute方法在获取类名的时候，注意参数是"class"
+        console.log(box.getAttribute("class"));*/
+
+
+        // 小结：
+        //  固有属性： 本来就有
+        //  自定义属性： 自己造的
+        //    作用： 存数据
+        //  如何获取自定义属性  getAttribute方法
+        //  
+        //  属性操作方法：固有的和自定义属性都可以操作
+        //      1. getAttribute(name)
+        //      2. setAttribute(name, value)
+        //      3. removeAttribute(name)
+        //  操作类名，写字符串"class"
+        //    
+        //  获取固有的属性
+        //      1. box.title    ==>  简单
+        //      2. box.getAttribute("title")
+
+    </script>
+</body>
+</html>

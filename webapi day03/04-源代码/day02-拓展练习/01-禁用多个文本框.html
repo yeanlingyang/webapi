@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<input type="text"><br>
+<input type="text"><br>
+<input type="text"><br>
+<input type="text"><br>
+<input type="text"><br>
+
+<input type="checkbox"><br>
+
+<input type="text"><br>
+<input type="text"><br>
+<input type="text"><br>
+<input type="text"><br>
+<input type="text"><br>
+<input type="button" id="btn" value="禁用所有的文本框">
+
+<script>
+  // 需求：禁用所有的文本框（注意是禁用所有文本框，不禁用 checkbox）
+
+  // 1. 找对象（btn）
+  var btn = document.querySelector("#btn");
+  var inps = document.querySelectorAll("input");
+
+  btn.onclick = function () {
+      for(var i = 0; i < inps.length; i++){
+        // inps[i].disabled = true;
+
+        // 只禁用文本框
+        if(inps[i].type === "text"){
+            inps[i].disabled = true;
+        }
+      }
+  }
+</script>
+
+</body>
+</html>

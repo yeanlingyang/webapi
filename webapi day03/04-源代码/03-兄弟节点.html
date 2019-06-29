@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+    <ul id="box">
+        <!-- 买一款 -->
+        <li>奔驰</li>
+        <li class="bmw">宝马</li>
+        <li>奥拓</li>
+        <li>mobile</li>
+    </ul>
+
+    <script>
+        var bmw = document.querySelector(".bmw");
+        
+        // 获取元素的上一个兄弟节点  previousSibling
+        // 获取元素的上一个兄弟元素  previousElementSibling
+        // 获取元素的下一个兄弟节点  nextSibling
+        // 获取元素的下一个兄弟元素  nextElementSibling
+
+        console.log(bmw.previousSibling);
+        console.log(bmw.previousElementSibling);
+
+        console.log(bmw.nextSibling);
+        console.log(bmw.nextElementSibling);
+
+
+        // 找父节点（父元素）  parentNode
+
+        console.log(bmw.parentNode);
+
+
+        // 小结：
+        //  兄弟元素：
+        //      previousElementSibling
+        //      nextElementSibling
+        // 父节点
+        //      parentNode
+    </script>
+</body>
+</html>

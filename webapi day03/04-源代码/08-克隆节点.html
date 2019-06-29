@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="box" style="width: 400px; padding: 20px; border: 4px solid #ccc;">
+        <p>这是p锻炼</p>        
+        <span>元素</span>
+    </div>
+
+    <h1 id="demo">这是div外面的h1</h1>
+
+    <script>
+        // 克隆节点
+        // 作用：在内存中克隆一份节点
+        // node ：  需要克隆的节点
+        // 参数 deep： 参数的值是个布尔类型 
+        //  true： 深拷贝，会克隆标签以及里面的内容
+        //  false： 浅拷贝：只会拷贝标签自身
+        // 返回值： 克隆出来的节点
+        // node.cloneNode(deep)
+
+
+        /*var box = document.querySelector("#box");
+        var res = box.cloneNode(true);
+        console.log(res);*/
+
+
+        var box = document.querySelector("#box");
+        var h = document.querySelector("h1");
+        var newH = h.cloneNode(true);
+
+        // 1. 如果克隆出来的元素带了id，不能让id重名，所以需要对克隆出来的节点修改id
+        // 2. 克隆出来的节点和原来的节点之间的修改是互不影响的
+        newH.id = "demo2";
+        newH.className = "aa";
+
+        console.log(newH);
+
+        box.appendChild(newH);
+
+    
+
+        // 小结：
+        //  克隆节点
+        //      cloneNode(deep)
+        //          true: 深拷贝 标签+内容
+        //          false： 浅拷贝 标签
+        //   注意点：
+        //      1. 如果带了， id， 要修改克隆出来的元素的id
+        //      2. 克隆出来的节点和原来的节点之间的修改是互不影响的
+    </script>
+</body>
+</html>

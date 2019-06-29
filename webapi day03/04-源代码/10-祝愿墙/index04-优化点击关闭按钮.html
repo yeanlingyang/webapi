@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    body {
+        margin: 0 auto;
+        padding: 0px;
+        font-size: 12px;
+        background: url(images/bg.gif) repeat center 36px;
+        text-align: center;
+        background-color: #c30230;
+    }
+
+    #content {
+        margin: 0 auto;
+        width: 960px;
+        background: url(images/content_bg.jpg) no-repeat left top;
+        height: 627px;
+        position: relative;
+    }
+
+    #content .tip1 {
+        position: absolute;
+        width: 227px;
+        left: 0px;
+        top: 0px;
+    }
+
+    #content .tip1 .tip_h {
+        background: url(images/tip1_h.gif) no-repeat left top;
+    }
+
+    #content .tip1 .tip_h {
+        width: 227px;
+        padding-top: 45px;
+        height: 23px;
+        text-align: left;
+        cursor: move;
+    }
+
+    #content .tip1 .tip_c {
+        background: url(images/tip1_c.gif) repeat-y;
+    }
+
+    #content .tip1 .tip_c {
+        width: 200px;
+        padding-left: 12px;
+        padding-right: 15px;
+        min-height: 40px;
+        text-align: left;
+        line-height: 20px;
+        max-height: 160px;
+        word-wrap: break-word;
+        word-break: break-all;
+        overflow: hidden;
+    }
+
+    #content .tip1 .tip_f {
+        background: url(images/tip1_f.gif) no-repeat left top;
+    }
+
+    #content .tip1 .tip_f {
+        width: 227px;
+        height: 53px;
+        padding-top: 20px;
+    }
+
+    #content .close {
+        float: left;
+        font-size: 12px;
+        cursor: pointer;
+        color: #000000;
+    }
+
+    .clr {
+        clear: both;
+        overflow: auto;
+        display: block;
+        height: 0px;
+    }
+
+    #content .icon {
+        float: left;
+        width: 35px;
+        padding-left: 15px;
+        height: 35px;
+        text-align: center;
+    }
+
+    #content .name {
+        float: right;
+        padding-right: 15px;
+        text-align: right;
+        font-size: 14px;
+        line-height: 35px;
+        color: #C0F;
+    }
+
+    #content .num {
+        float: left;
+        padding-left: 7px;
+        width: 195px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <div class="tip1">
+            <div class="tip_h" title="双击关闭纸条">
+                <div class="num">第[49568]条 2016-02-17 22:51:52</div>
+                <div class="close" title="关闭纸条">×</div>
+                <div class="clr"></div>
+            </div>
+            <div class="tip_c">
+                每天都要被自己给帅醒，希望以后越来越帅！！！
+            </div>
+            <div class="tip_f">
+                <div class="icon">
+                    <img src="images/bpic_1.gif" alt="" title="">
+                </div>
+                <div class="name">成真的人</div>
+                <div class="clr"></div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script>
+        // 需要实现的功能
+        //  1. 克隆十分tip1，添加到content中
+        //  1.1 找对象（tip1、 content）
+        //  1.2 for循环克隆十分，每一份添加到content中
+
+        var content = document.querySelector("#content");
+        var tip1 = content.querySelector(".tip1");
+
+        // querySelector && querySelectorAll 的两种写法
+        // document.querySelector()  ==> 从整个页面中查找元素
+        // box.querySelector()       ==> 从box中查找元素
+
+        // console.log(content, tip1);
+
+        for(var i = 0; i < 10; i++){
+            var tip = tip1.cloneNode(true);
+            content.appendChild(tip);
+        }
+
+
+        //  2. 给所有的tip1随机位置（left、top）
+        //  2.1 获取到所有的tip1
+        //  2.2 for循环遍历每一个tip1，随机位置（left、top）
+        //  2.3 随机的left、top是有范围限制的
+        //      left范围： content的宽度 - tip1的宽度
+
+        // 2.1
+        // var tips = content.children;
+        var tips = content.querySelectorAll(".tip1");
+        // console.log(tips);
+        
+        var count = 0;
+
+        // 2.2 
+        for (var i = 0; i < tips.length; i++) {
+            var randomLeft = parseInt(Math.random() * 734);
+            var randomTop =  parseInt(Math.random() * 447);
+            // console.log(randomLeft, randomTop);
+
+            // 设置随机位置
+            tips[i].style.left = randomLeft + "px";
+            tips[i].style.top = randomTop + "px";
+
+
+            // 功能3: 点击关闭按钮，删除对应的tip1
+            var closeBtn = tips[i].querySelector(".close");
+            closeBtn.onclick = function () {
+                content.removeChild(this.parentNode.parentNode);
+            }
+
+            // 功能4： 双击事件
+            var tip_h = tips[i].firstElementChild; // tip_h
+            tip_h.ondblclick = function () {
+                // console.log(this); // 
+                content.removeChild( this.parentNode );
+            }
+
+            // 功能5： 点谁谁上来
+            tips[i].onclick = function () {
+                this.style.zIndex = ++count;
+            }
+        }
+
+        //  3. 点击关闭按钮，删除对应的tip1  ==> 该功能代码写到上面for循环中
+        //  3.1 获取所有的关闭按钮
+        //  3.2 for循环遍历给每一个按钮注册click
+        //  3.3 把对应的tip1给删除掉
+
+
+        //  4. 双击tip_h区域，删除对应的tip1  ==> 该功能代码写在上面for循环
+        // 双击事件 ondblclick
+
+
+        //  5. 点击tip1，点谁谁上来， 修改层级 ==> 该功能代码写在上面for循环
+
+    </script>
+</body>
+
+</html>
