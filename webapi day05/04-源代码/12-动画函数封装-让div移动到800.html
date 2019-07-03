@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: #f99;
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <button>点击，让div移动400px的位置</button>
+    <button>点击，让div移动800px的位置</button>
+    <div id="box"></div>
+
+
+    <script>
+
+        var btn1 = document.querySelectorAll("button")[0];
+        var btn2 = document.querySelectorAll("button")[1];
+        var box = document.querySelector("#box");
+
+        // 添加清除定时器的代码
+        btn1.onclick = function () {
+            animate(box, 400)
+        }
+
+
+        btn2.onclick = function () {
+            animate(box, 800)
+        }
+
+
+
+        // 目前存在的问题： div在800的位置，点击去400，div不动。
+
+
+        // 1. step 的正负数的问题
+        // current+=10 有问题 ， 这样的写法只能是让div往右走
+        // 
+        // div 能往右走，也能往左走
+        // 所以我们的current 既能 + 10  ，也能 -10
+        // 
+        // step 既可以是 +10 也可以是-10
+        // 往右走 step  +10   往左走 -10
+        //  current < target   往右走 step  +10
+
+
+        //  2. 清除定时器的 if判断条件不对
+        //   if(current >= target)  ==> 仅仅适用于div往右走
+
+        //  需要改写if判断条件
+        //      还需要移动的距离 和 每次移动距离   做比较
+        //   每次移动距离     ==>   step
+        //   还需要移动的距离 ==>   target - current
+
+        // 什么时候表示到了终点
+        //   还需要移动的距离 < 每次移动距离  说明达到了终点，就可以清除定时器了
+
+        //  注意点： 
+        //      由于 step 可能会取到负数， target - current 可能会取到负数
+        //      我们比较的是距离，比的是值，所以需要取他们的绝对值进行比较
+        //      Math.abs()
+
+
+
+        // 封装做啥？把函数内写死的值提取成参数
+        //  参数：
+        //      element： 让那个元素去做动画
+        //      target： 移动的终点
+        // 作用：让任何元素去做任何left位置的动画
+        function animate(element, target){
+            // 当点击按钮的时候，开启一个定时器
+            var timerId = setInterval(function(){
+                // 在按钮点击的时候，获取div到左边的距离
+                var current = element.offsetLeft;
+
+                var step = current < target ? 10 : -10;
+
+                console.log(step);
+
+                if(Math.abs(target - current) < Math.abs(step)){
+                    // 到达了终点
+                    clearInterval(timerId)
+                }else{
+                    current += step;
+                    element.style.left = current + "px";
+                }
+            }, 30)
+        }
+    </script>
+</body>
+</html>

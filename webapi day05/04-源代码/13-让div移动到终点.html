@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: #f99;
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <button>点击，让div移动400px的位置</button>
+    <button>点击，让div移动800px的位置</button>
+    <div id="box"></div>
+
+
+    <script>
+
+        var btn1 = document.querySelectorAll("button")[0];
+        var btn2 = document.querySelectorAll("button")[1];
+        var box = document.querySelector("#box");
+
+        // 添加清除定时器的代码
+        btn1.onclick = function () {
+            animate(box, 96)
+        }
+
+
+        btn2.onclick = function () {
+            animate(box, 800)
+        }
+
+
+
+        // 目前存在的问题： 如果让div移动到96，div并没有移动到终点，在90的位置上停止下来了
+
+
+
+        // 封装做啥？把函数内写死的值提取成参数
+        //  参数：
+        //      element： 让那个元素去做动画
+        //      target： 移动的终点
+        // 作用：让任何元素去做任何left位置的动画
+        function animate(element, target){
+            // 当点击按钮的时候，开启一个定时器
+            var timerId = setInterval(function(){
+                // 在按钮点击的时候，获取div到左边的距离
+                var current = element.offsetLeft;
+
+                var step = current < target ? 10 : -10;
+                // console.log(step);
+
+                if(Math.abs(target - current) < Math.abs(step)){
+                    // 到达了终点
+                    clearInterval(timerId);
+
+                    // 清除定时器的时候，元素不一定到达了终点
+                    // 直接让元素从90的位置走到了96
+                    element.style.left = target + "px";
+                }else{
+                    current += step;
+                    element.style.left = current + "px";
+                }
+            }, 30)
+        }
+    </script>
+</body>
+</html>

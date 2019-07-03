@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    #box {
+        width: 400px;
+        height: 50px;
+        background-color: #acffc2;
+        border: 5px solid black;
+        margin: 100px auto;
+        font: bold 24px/50px 楷体;
+        text-align: center;
+        color: red;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+
+    <script>
+      
+      function changeTime(){
+        var box = document.querySelector("#box");
+        box.innerText = new Date().toLocaleString();
+      }
+      changeTime();
+
+
+      /*setInterval(function () {
+        changeTime();
+      }, 1000)*/
+
+      setInterval(changeTime, 1000)
+    </script>
+</body>
+
+</html>

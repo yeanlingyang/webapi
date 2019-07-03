@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>开启定时器</button>
+    <button>清除定时器</button>
+    <script>
+        var btn1 = document.querySelectorAll("button")[0];
+        var btn2 = document.querySelectorAll("button")[1];
+
+        // 开启定时器 setInterval(func, interval)
+        //   每间隔一段时间不停的去执行
+        // 清除定时器  clearInterval(id) 根据定时器的id来清除定时器
+
+        var timerId;
+        btn1.onclick = function () {
+            timerId = setInterval(function () {
+               console.log("我没病，真的没病"); 
+            }, 1000)
+        }
+
+        btn2.onclick = function () {
+            console.log("对，你没病，该吃药了");
+            clearInterval(timerId)
+        }
+
+
+        // 小结：
+        //  延时器
+        //      setTimeout()    延时一段时间，执行一次
+        //      clearTimeout()
+        //  
+        //  定时器
+        //      setInterval()   间隔一段时间，不停的执行， 除非手动关闭掉
+        //      clearInterval()  
+    </script>
+</body>
+
+</html>
