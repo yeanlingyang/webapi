@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    .login-header {
+        width: 100%;
+        text-align: center;
+        height: 30px;
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+    ul,
+    li,
+    ol,
+    dl,
+    dt,
+    dd,
+    div,
+    p,
+    span,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    a {
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .login {
+        width: 512px;
+        height: 280px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        border: #ebebeb solid 1px;
+        background: #ffffff;
+        box-shadow: 0px 0px 20px #ddd;
+        z-index: 9999;
+        display: none;
+    }
+
+    .login-title {
+        width: 100%;
+        margin: 10px 0px 0px 0px;
+        text-align: center;
+        line-height: 40px;
+        height: 40px;
+        font-size: 18px;
+        position: relative;
+        cursor: move;
+
+        /*  火狐  */
+        /* -moz-user-select: none; */
+        /*webkit浏览器*/
+        /* -webkit-user-select: none;  */
+        /*IE10*/
+        /* -ms-user-select: none;  */
+        /*早期浏览器*/
+        /* -khtml-user-select: none;  */
+        /*禁止用户选择文字*/
+        user-select: none;
+    }
+
+    .login-input-content {
+        margin-top: 20px;
+    }
+
+    .login-button {
+        width: 50%;
+        margin: 30px auto 0px auto;
+        line-height: 40px;
+        font-size: 14px;
+        border: #ebebeb 1px solid;
+        text-align: center;
+    }
+
+    .login-bg {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        background: #000000;
+        filter: alpha(opacity=30);
+        opacity: 0.3;
+        display: none;
+    }
+
+    a {
+        text-decoration: none;
+        color: #000000;
+    }
+
+    .login-button a {
+        display: block;
+    }
+
+    .login-input input.list-input {
+        float: left;
+        line-height: 35px;
+        height: 35px;
+        width: 350px;
+        border: #ebebeb 1px solid;
+        text-indent: 5px;
+    }
+
+    .login-input {
+        overflow: hidden;
+        margin: 0px 0px 20px 0px;
+    }
+
+    .login-input label {
+        float: left;
+        width: 90px;
+        padding-right: 10px;
+        text-align: right;
+        line-height: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+
+    .login-title span {
+        position: absolute;
+        font-size: 12px;
+        right: -20px;
+        top: -30px;
+        background: #ffffff;
+        border: #ebebeb solid 1px;
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+        z-index: 99;
+        cursor: pointer;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="login-header">
+        <a id="link" href="javascript:void(0);">点击，弹出登录框</a></div>
+    <div id="login" class="login">
+        <div id="title" class="login-title">登录会员
+            <span id="closeBtn">关闭</span></div>
+        <div class="login-input-content">
+            <div class="login-input">
+                <label>用户名：</label>
+                <input type="text" placeholder="请输入用户名" name="info[username]" id="username" class="list-input">
+            </div>
+            <div class="login-input">
+                <label>登录密码：</label>
+                <input type="password" placeholder="请输入登录密码" name="info[password]" id="password" class="list-input">
+            </div>
+        </div>
+        <div id="loginBtn" class="login-button"><a href="javascript:void(0);" id="login-button-submit">登录会员</a></div>
+    </div>
+    <script>
+    //  1. 点击link显示 login
+    //  2. 点击 closeBtn 隐藏 login
+    //  3. 点击 document 隐藏 login
+
+
+    var link = document.querySelector("#link");
+    var login = document.querySelector("#login");
+    var closeBtn = document.querySelector("#closeBtn");
+
+
+    link.onclick = function(e) {
+        // 阻止事件冒泡
+        e.stopPropagation();
+        login.style.display = "block";
+
+        // 让login水平垂直居中
+        login.style.left = (window.innerWidth - login.offsetWidth ) / 2 + "px";
+        login.style.top = (window.innerHeight - login.offsetHeight ) / 2 + "px";
+    }
+
+    closeBtn.onclick = function() {
+        login.style.display = "none";
+    }
+
+    document.onclick = function() {
+        console.log("hidden");
+        login.style.display = "none";
+    }
+
+    // 需要阻止事件冒泡带来的影响  ==>  阻止事件冒泡
+    //  让事件对象调用 stopPropagation()
+
+    // 给整个login 登录框注册click。 让其阻止事件冒泡
+    login.onclick = function(e) {
+        e.stopPropagation();
+    }
+
+    // 还需要实现的功能
+    // 1. 显示login的时候，让login是水平垂直居中（left、top）
+    //   代码应该写在 link.onclick 点击事件里面
+
+
+    // 2. 摁住title区域，实现拖拽效果
+    //  2.1 找对象（title）
+    //  2.2 title  注册 onmousedown    (节流阀)
+    //  2.3 document 注册 onmousemove
+    //  2.4 title 注册 onmouseup 阀门关闭掉
+
+
+    var title = document.querySelector("#title");
+
+    var open = false;
+    var x, y;
+    title.onmousedown = function (e) {
+      // console.log("down");
+      open = true;
+
+      // 坑：title.offsetLeft ==>  0
+      // x = e.pageX - title.offsetLeft;
+      x = e.pageX - login.offsetLeft;
+      y = e.pageY - login.offsetTop;
+    }
+
+    document.onmousemove = function (e) {
+      if(open){
+
+        var disX = e.pageX - x;
+        var disY = e.pageY - y;
+
+        if(disX < 0){
+          disX = 0;
+        }
+
+        if(disY < 20){
+          disY = 20;
+        }
+
+        // 限制下边
+        var maxH = window.innerHeight - login.offsetHeight;
+        if(disY > maxH){
+          disY = maxH
+        }
+
+        // 限制右边
+        var maxW = window.innerWidth - login.offsetWidth - 20;
+        if(disX > maxW){
+          disX = maxW
+        }
+
+        // console.log("move");
+        login.style.left = disX + "px";
+        login.style.top = disY + "px";
+      }
+    }
+
+    title.onmouseup = function () {
+      // console.log("up");
+      open = false;
+    }
+
+
+    document.onkeyup = function (e) {
+      if(e.keyCode === 27){
+        login.style.display = "none";
+      }
+    }
+
+    // 3. 限制login拖拽的范围
+    // 4. 按住esc 键也能关闭掉 login
+    </script>
+</body>
+
+</html>

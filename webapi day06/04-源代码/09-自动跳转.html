@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <a href="http://web.itcast.cn" id="link">注册成功，3秒后跳转到世界名网</a>
+
+    <script>
+        var link = document.querySelector("#link");
+
+        var count = 3;
+        var timerId = setInterval(function () {
+            count--;
+
+            if (count == 0) {
+                clearInterval(timerId);
+                location.href = link.href;
+            }
+
+            link.innerText = "注册成功，"+ count +"秒后跳转到世界名网";
+        }, 1000)
+    </script>
+</body>
+</html>

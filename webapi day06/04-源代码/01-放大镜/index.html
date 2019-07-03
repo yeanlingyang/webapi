@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .box {
+        width: 350px;
+        height: 350px;
+        margin: 100px;
+        border: 1px solid #ccc;
+        position: relative;
+    }
+
+    .big {
+        width: 400px;
+        height: 400px;
+        position: absolute;
+        top: 0;
+        left: 360px;
+        border: 1px solid #ccc;
+        overflow: hidden;
+        display: none;
+    }
+
+    .mask {
+        width: 175px;
+        height: 175px;
+        background: rgba(255, 255, 0, 0.4);
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        cursor: move;
+        display: none;
+    }
+
+    .small {
+        position: relative;
+    }
+
+    .box img {
+        vertical-align: top;
+    }
+
+    #bigBox img {
+        position: absolute;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box">
+        <div id="smallBox" class="small">
+            <img src="images/001.jpg" width="350" alt="" />
+            <div id="mask" class="mask"></div>
+        </div>
+        <div id="bigBox" class="big">
+            <img id="bigImg" src="images/0001.jpg" width="800" alt="" />
+        </div>
+    </div>
+    <script>
+    // 功能
+    // 1. 鼠标移入到 smallBox 上， 显示 mask && bigBox
+        //  1.1 找对象（smallBox、mask、bigBox）
+        //  1.2 smallBox 注册 onmouseover
+        //  1.3 mask && bigBox 显示
+    // 2. 鼠标移出  smallBox， 隐藏 mask && bigBox
+    // 3. 鼠标在 smallBox 上移动
+        //  3.1 让mask 跟随鼠标移动
+        //  3.2 限制mask的范围
+        //  3.3 让bigImg 等比例的展示对应的部分
+
+    var box = document.querySelector("#box");
+    var smallBox = document.querySelector("#smallBox");
+    var mask = document.querySelector("#mask");
+    var bigBox = document.querySelector("#bigBox");
+
+
+    smallBox.onmouseover = function () {
+        mask.style.display = "block";
+        bigBox.style.display = "block";
+
+        // console.log("移入");
+    }
+
+    smallBox.onmouseout = function () {
+        mask.style.display = "none";
+        bigBox.style.display = "none";
+
+        // console.log("移出");
+    }
+
+    smallBox.onmousemove = function (e) {
+        //  3.1 让mask 跟随鼠标移动
+
+        var x = e.pageX - box.offsetLeft - mask.offsetWidth / 2;
+        var y = e.pageY - box.offsetTop - mask.offsetHeight / 2;
+
+        // 限制左边
+        /*if(x < 0){
+            x = 0;
+        }*/
+        x = Math.max(x, 0);
+
+        // 限制上边
+        /*if(y < 0){
+            y = 0;
+        }*/
+        y = Math.max(y, 0);
+
+        // 限制右边
+        var maxW = smallBox.offsetWidth - mask.offsetWidth;
+        /*if(x > maxW){
+            x = maxW;
+        }*/
+        x = Math.min(x, maxW);
+
+
+        // 限制下边
+        var maxH = smallBox.offsetHeight - mask.offsetHeight;
+        /*if(y > maxH){
+            y = maxH;
+        }*/
+        y = Math.min(y, maxH);
+
+
+        mask.style.left = x + "px";
+        mask.style.top = y + "px";
+
+        // 限制mask的范围的判断代码必须写在 mask设置left、top之前
+
+
+        // 移动bigImg   等比例的关系
+        // mask现在移动的距离  bigImg需要移动的距离（？？？）
+        // mask能够移动的距离  bigImg能够移动的距离
+
+        // bigImg需要移动的距离（？？？） =  mask现在移动的距离 * bigImg能够移动的距离 / mask能够移动的距离
+
+        //注意： bigImg的left、top的取值都是负值，如果是正值，那么bigImg移动的时候会越来越远
+        bigImg.style.left = - x * (bigImg.offsetWidth - bigBox.offsetWidth) / maxW + "px";
+        bigImg.style.top = - y * (bigImg.offsetHeight - bigBox.offsetHeight) / maxH + "px";
+    }
+    </script>
+</body>
+
+</html>

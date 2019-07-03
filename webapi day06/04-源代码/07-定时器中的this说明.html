@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="点击发送短信">
+
+    <script>
+
+        // 思路： 
+        // 1. 找对象（input）
+        // 2. 注册 click
+        // 3. 按钮禁用
+        // 4. 开始倒计时，修改input的文字内容
+        // 5. 当倒计时的时间为0的时候，去掉按钮的禁用，恢复按钮的文字内容  “点击发送短信”
+        
+        // 1.
+        var btn2 = document.querySelector("input");
+        
+        // 2.
+        btn2.onclick = function () {
+            // 3.
+            this.disabled = true;
+
+            // 把this的指向赋值给变量that， 那么变量that也指向了btn按钮
+            // 注意该代码不要写到了定时器函数中
+            var that = this;
+
+            // 每次按钮点击的时候，把count重置为了5.从5的基础上开始减减
+            var count = 5;
+
+            // 4. 
+            var timerId = setInterval(function(){
+                count--;
+
+                // 在定时器或者是延时器的函数中，this指向window
+                console.log(this);
+
+                if(count === 0){
+                    // 到了时间
+                    clearInterval(timerId);
+                    that.disabled = false;
+                    that.value = "点击发送短信";
+                }else{
+                    that.value = count + "秒后再次发送";
+                }
+            }, 1000)
+        }
+    </script>
+</body>
+</html>
