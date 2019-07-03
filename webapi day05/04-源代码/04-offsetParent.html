@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="father" style="position: relative;">
+        <div class="son">
+            <div class="sun"></div>
+        </div>
+    </div>
+
+    <script>
+
+        // offsetParent   parentNode（父节点）
+        
+        var sun = document.querySelector(".sun");
+
+        console.log(sun.parentNode);  // son
+
+        // offsetParent 获取的是距离元素最近的有定位的父元素， 如果没有找到有定位的父元素，就找body
+        console.log(sun.offsetParent);
+
+        // 小结：
+        //  parentNode  找父节点（结构相关，和定位无关）
+        //  offsetParent 找有定位的父元素（结构相关，还要有定位）
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .father{
+            width: 400px;
+            height: 400px;
+            background-color: #f99;
+        }
+        .son{
+            width: 300px;
+            height: 300px;
+            background-color: lime;
+        }
+        .sun{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="father">father
+        <div class="son">son
+            <div class="sun">sun</div>
+        </div>
+    </div>
+    <script>
+
+        //  任何一个事件都要经历三个阶段
+        //   1. 捕获阶段
+        //   2. 目标阶段（点谁谁就是目标）
+        //   3. 冒泡阶段
+        
+
+        var father = document.querySelector(".father");
+        var son = document.querySelector(".son");
+        var sun = document.querySelector(".sun");
+
+
+        document.addEventListener("click", function(){
+            console.log(this);
+        }, true);
+
+        document.body.addEventListener("click", function(){
+            console.log(this);
+        }, false);
+
+        father.addEventListener("click", function(){
+            console.log(this);
+        }, true);
+
+        son.addEventListener("click", function(){
+            console.log(this);
+        }, false);
+
+        sun.addEventListener("click", function(){
+            console.log(this);
+        }, true);
+
+        // on+注册事件 只会是在冒泡阶段触发
+        // 要想在捕获阶段触发，必须要使用addEventListener，而且第三个参数是true。
+
+        // 注意： 一个元素的事件要么是在捕获阶段触发。 要么是在冒泡阶段，不会再两个阶段都触发。
+    </script>
+</body>
+</html>

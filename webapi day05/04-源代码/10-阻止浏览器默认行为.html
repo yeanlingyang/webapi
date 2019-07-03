@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+    <a href="http://www.baidu.com">百度一下</a>
+
+    <script>
+
+        // 阻止a链接跳转
+        //  1. return false
+        //  2. 事件对象调用 preventDefault();
+        //  3. href="javascript:void(0);"
+
+        // 上面1、2两种方式可以阻止浏览器的其他默认行为
+        // 第三种方式只能阻止a链接跳转
+
+
+        var a = document.querySelector("a");
+        a.onclick = function (e) {
+            // return false;
+
+            e.preventDefault();    // ==> 阻止浏览器的默认行为
+            e.stopPropagation();  // ==>  阻止事件冒泡
+        }
+
+
+        // 常见的事件
+
+        //  1. 鼠标事件
+        //      onclick 
+        //      ondblclick
+        //      onmouseover
+        //      onmouseout
+        //      onmousemove
+        //      onmousedown
+        //      onmouseup
+        //      onfocus
+        //      onblur
+        //      
+        //  
+        //  2. 键盘事件
+        //    onkeydown
+        //    onkeyup
+    </script>
+</body>
+</html>

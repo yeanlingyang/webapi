@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .box {
+      width: 650px;
+      margin: 100px auto;
+      border: 1px solid #000;
+      padding: 20px;
+    }
+
+    textarea {
+      width: 450px;
+      height: 160px;
+      outline: none;
+      resize: none;
+    }
+
+    ul {
+      width: 450px;
+      padding-left: 80px;
+    }
+
+    ul li {
+      line-height: 25px;
+      border-bottom: 1px dashed #cccccc;
+    }
+
+    input {
+      float: right;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box" id="weibo">
+  <span>微博发布</span>
+  <textarea name="" id="txt" cols="30" rows="10"></textarea>
+  <button id="btn">发布</button>
+  <button id="btnAll">一键删除</button>
+  <ul id="ul"></ul>
+</div>
+
+<script>
+  // 思路： 
+  // 1. 找对象（txt、btn、ul）
+  // 2. 给btn注册click
+  // 3. 获取txt的内容，
+  // 4. 创建li，设置li的内容 为 txt的内容
+  // 5. 把li添加到ul中
+  // 6. 创建按钮，添加到li中
+  // 7. 给按钮添加click， 点击删除对应的li
+
+  // 1.
+  var txt = document.querySelector("#txt");
+  var btn = document.querySelector("#btn");
+  var ul = document.querySelector("#ul");
+
+
+  // 把发布的功能用一个fn函数给封装起来了
+  /*function fn(){
+    
+  }*/
+
+  // 2.
+  btn.onclick = function(){
+    // 3.
+    var val = txt.value.trim();
+
+    if(val.length === 0){
+      // 如果用户没有输入内容，禁止执行下面代码
+      return; 
+    }
+
+    // 清空文本域的内容
+    txt.value = "";
+
+    // 4.
+    var newLi = document.createElement("li");
+    newLi.innerText = val;
+
+    var newBtn = document.createElement("button");
+    newBtn.innerText = "删除";
+    newBtn.style.float = "right";
+    // 点击删除功能
+    newBtn.onclick = function () {
+      ul.removeChild(this.parentNode);
+    }
+    newLi.appendChild(newBtn);
+
+    // 5.
+    // ul.appendChild(newLi);
+    ul.insertBefore(newLi, ul.firstElementChild);
+  };
+
+
+  // 添加键盘事件
+  // 如果按键的键盘码是13，表示按键是回车，就要实现发布功能
+
+  // 给页面注册了键盘弹起事件
+  document.onkeyup = function (e) {
+    if(e.keyCode === 13){
+      // 回车
+      btn.onclick();
+    }
+  }
+
+
+  // 添加一键删除
+  //  思路： 
+  //   1. 找对象（按钮、 li）
+  //   2. 给按钮注册click
+  //   3. for循环把每一个li删除
+
+
+  // querySelectorAll 解决的
+  /*// 1.
+  var btnDelAll = document.querySelector("#btnAll");
+
+  // 2.
+  btnDelAll.onclick = function () {
+    // 当按钮点击的时候，找到所有的li元素
+    var lis = ul.querySelectorAll("li");  // 获取的元素集合是个静态集合
+    console.log(lis);
+    for(var i = 0; i< lis.length; i++){
+      ul.removeChild(lis[i]);
+    }
+  }*/
+
+
+  // children
+  // 1.
+  var btnDelAll = document.querySelector("#btnAll");
+  var lis = ul.children;  // children 是动态集合
+  console.log(lis);
+
+  // 2.
+  btnDelAll.onclick = function () {
+    for(var i = 0; i< lis.length;){
+      // 去掉i++， 让i一直都是0，能够保证把lis中的每一项都能删除掉
+      ul.removeChild(lis[i]);
+    }
+  }
+
+</script>
+
+</body>
+</html>

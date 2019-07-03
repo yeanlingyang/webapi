@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: #f99;
+            cursor: move;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+
+    <script>
+        var box = document.querySelector("#box");
+
+        // 节流阀：让事件有限制的执行
+        //  该案例中，限制哪个事件的执行   ==>  onmousemove 
+        //  
+        //  使用节流阀的思路
+        //      1. 弄一个阀门，阀门一开始是开着还是关着   该案例中，阀门初始是关闭的
+        //      2. 确定什么时候阀门打开和关闭
+        //              鼠标摁下的时候，阀门打开，onmousemove事件就可以触发了
+        //              鼠标抬起的时候，阀门关闭掉，onmousemove事件就不可以触发了
+
+
+        var open = false;  // open 代表着是阀门，一开始关闭的， onmousemove 事件一开始就不能执行
+
+        // x,y 是全局变量
+        var x, y;
+        box.onmousedown = function (event) {
+            console.log(event);
+            console.log("鼠标摁下去");
+
+            // 鼠标摁下的时候，阀门打开, 设置open为true
+            open = true;
+
+            x = event.pageX - box.offsetLeft;
+            y = event.pageY - box.offsetTop;
+        }
+
+        document.onmousemove = function (event) {
+            if(open){
+                // 只有在阀门是打开的状态下才能执行里面的代码
+                // console.log("div 跟随鼠标移动了");
+
+                box.style.left = event.pageX - x + "px";
+                box.style.top = event.pageY - y + "px";
+            }
+        }
+
+        document.onmouseup = function () {
+            console.log("鼠标抬起来了");
+
+            // 鼠标抬起的时候，阀门关闭掉
+            open = false;
+        }
+
+        // 小结：
+        //  节流阀思想
+        //       用来限制事件的执行（得分析清除，需要让哪个事件有限制的执行）
+        //       使用思路：
+        //          1. 设置一个阀门， 阀门一开始是开启还是关闭的
+        //          2. 考虑阀门什么时候开启什么时候关闭
+    </script>
+</body>
+
+</html>

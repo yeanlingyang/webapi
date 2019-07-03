@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .father{
+            width: 400px;
+            height: 400px;
+            background-color: #f99;
+        }
+        .son{
+            width: 300px;
+            height: 300px;
+            background-color: lime;
+        }
+        .sun{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="father">father
+        <div class="son">son
+            <div class="sun">sun</div>
+        </div>
+    </div>
+
+    <script>
+
+        // 事件冒泡与事件捕获
+        // 事件冒泡 ： 一个元素的事件触发了，同样的事件会在该元素的所有祖先元素中依次触发（从里往外）
+
+        var father = document.querySelector(".father");
+        var son = document.querySelector(".son");
+        var sun = document.querySelector(".sun");
+
+        var arr = [sun, son, father, document.body, document];
+
+        // addEventListener的第三个参数就可以决定是事件捕获还是事件冒泡
+        // addEventListener(event, listener, useCapture)
+        //  useCapture: 是否使用事件捕获， 默认值是false，默认使用事件冒泡
+        //      true 使用的是事件捕获
+
+        // 方便注册事件
+        /*for (var i = 0; i < arr.length; i++) {
+            arr[i].addEventListener("click", function(){
+                console.log(this);
+            }, false)
+        }*/
+
+
+        // 不要存在以下的误解：
+        //  元素只有注册了事件才会有事件冒泡和事件捕获
+
+        // 小结：
+        //  事件冒泡 && 事件捕获
+        //  从里往外     从外到内
+
+        // addEventListener的第三个参数useCapture 默认值false（事件冒泡）
+    </script>
+</body>
+</html>

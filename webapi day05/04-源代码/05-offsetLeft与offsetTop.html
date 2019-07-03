@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .father{
+            width: 400px;
+            height: 400px;
+            background-color: #f99;
+            margin: 100px;
+            position: relative;
+        }
+        .son{
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            position: relative;
+            left: 50px;
+            margin-left: 40px;
+            top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="father">
+        <div class="son"></div>
+    </div>
+
+    <script>
+        // offsetLeft  offsetTop
+        
+        var son = document.querySelector(".son");
+
+        // console.log(son.style.left);
+
+        //  offsetLeft/offsetTop 获取元素到有定位的父元素之间真实的距离
+        //     有定位的父元素（offsetParent）
+        console.log(son.offsetLeft);
+        console.log(son.offsetTop);
+
+
+        // offsetTop offsetLeft 是只读属性，设置不起效果
+        // son.offsetTop = 0;
+
+        // 想要设置元素之间的距离，就用style
+        son.style.left = "-40px";
+
+
+        // offset系列属性
+        // offsetWidth  offsetHeight   ==>  获取真实的宽高
+        // offsetParent                ==>  获取元素最近的有定位的父元素
+        // offsetLeft offsetTop        ==>  获取元素到 offsetparent 之间的距离
+
+        // 以上共同点： 都是只读的，设置没有效果
+        // 要想设置样式， 使用style 来设置
+    </script>
+</body>
+</html>

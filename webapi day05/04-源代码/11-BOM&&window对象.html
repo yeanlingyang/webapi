@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="box">哈哈</div>
+
+    <script>
+
+        // BOM  浏览器对象模型
+        
+
+        // window 对象
+        //  1.  window 对象是js中的全局对象，也叫做顶级对象
+        //      全局对象表示window在任何地方都可以使用
+        //   1.1 alert document console.log 这些属性或者是方法都是属于window对象
+        //   1.2 在全局中声明的变量或者是函数，都是属于window对象的
+        //   1.3 学,习的dom也是属于window对象
+
+        //  2. window的使用很常用，所以，我们在使用window对象的属性和方法的时候，可以直接省略window
+
+        // window.alert(1)
+
+        /*console.log(window.document.querySelector("#box"));
+        console.log(1)*/
+
+        var a = 10;
+
+        function fn(){
+            console.log(123);
+        }
+
+        console.log(window.a);
+        window.fn()
+    </script>
+</body>
+</html>

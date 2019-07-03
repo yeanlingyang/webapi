@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            padding: 10px;
+            border: 10px solid #000;
+            margin: 10px;
+            background-color: #f99;
+        }
+    </style>
+</head>
+<body>
+
+    <div></div>
+
+    <script>
+
+        // offset系列属性
+        // offsetWidth offsetHeight  offsetParent  offsetLeft  offsetTop
+
+        // offsetWidth offsetHeight 
+        
+        var box = document.querySelector("div");
+
+        //  style 获取的是行内样式
+        // console.log(box.style.width);
+
+
+        // 可以获取元素的真实的宽高， 返回值是个数值，不带单位，参与运算方便
+        //  真实的宽高(内容的宽 + padding + border)
+        console.log(box.offsetWidth);
+        console.log(box.offsetHeight);
+
+
+        // offsetWidth offsetHeight 是只读属性，设置无效。
+        // box.offsetWidth = "400px";
+
+
+        // 如果想修改元素的宽高，使用style来设置
+        box.style.width = "500px";
+
+
+
+        // 小结：
+        //  offsetWidth  offsetHeight 
+        //   获取元素真实的宽高（宽+padding+border）
+        //   只读的，设置无效
+        //   设置宽高，style来设置
+    </script>
+</body>
+</html>

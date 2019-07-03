@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <script>
+
+        // on 当。。。时候
+        // load 加载
+        //  window.onload = function(){}
+
+        // window.onload 当页面加载完成的时候，还需要等待外部资源(图片、css样式文件、js文件)加载好才会执行
+        // 
+        //  window.onload 入口函数
+        /*window.onload = function () {
+            var box = document.getElementById("box");
+            box.innerText = "嘿嘿";
+        }*/
+
+        // 一个页面中，不要写多个window.onload ，后面的会覆盖前面
+        window.onload = function(){
+            console.log(1);
+        }
+
+        window.onload = function(){
+            console.log(2);
+        }
+    </script>
+
+
+</head>
+<body>
+
+    <div id="box">哈哈</div>
+    
+</body>
+</html>

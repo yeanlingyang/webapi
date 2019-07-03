@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 延时器
+        function fn(){
+            console.log(1);
+        }
+
+        // 这样是让fn函数立即执行了
+        // fn();
+
+        // fn函数延时3秒后执行
+
+
+        // 延时器语法
+        //  作用： 开启了一个延时器
+        //  参数：
+        //      func： 延时执行的函数
+        //      delay： 延时的时间，   单位是ms
+        // setTimeout(func, delay)
+
+
+        /*setTimeout(function(){
+            console.log("延时执行了");
+        }, 2000)*/
+        
+            
+        // fn函数延时3秒后执行
+
+        // 第一种写法：
+        setTimeout(fn, 3000)
+
+        // 第二种写法
+        setTimeout(function(){
+            fn();
+        }, 3000)
+
+    </script>
+</body>
+</html>
