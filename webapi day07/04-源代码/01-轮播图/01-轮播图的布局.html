@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .box{
+            width: 790px;
+            height: 340px;
+            border: 2px solid #000;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .box ul{
+            width: 800%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+        }
+        .box ul li{
+            float: left;
+        }
+    
+        /*小圆点*/
+        .box ol{
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 20px;
+            background-color: rgba(255, 255, 255, .6);
+            padding: 0 5px;
+            border-radius: 12px;
+        }
+
+        .box ol li{
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #fff;
+            float: left;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .box ol li.now{
+            background-color: red;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="box">
+        <!-- 放图片的 -->
+        <ul>
+            <li><a href="#"><img src="./images/1.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/2.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/3.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/4.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/5.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/6.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/7.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/8.jpg" alt=""></a></li>
+        </ul>
+
+        <!-- 放小圆点 -->
+        <ol>
+            <li class="now"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </div>
+</body>
+</html>

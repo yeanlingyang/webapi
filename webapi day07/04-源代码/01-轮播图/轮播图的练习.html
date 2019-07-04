@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .box {
+        width: 790px;
+        height: 340px;
+        margin: 100px auto;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .box ul {
+        width: 900%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+    }
+
+    .box ul li {
+        float: left;
+    }
+    /*小圆点*/
+
+    .box ol {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 20px;
+        background-color: rgba(255, 255, 255, .6);
+        padding: 0 5px;
+        border-radius: 12px;
+    }
+
+    .box ol li {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #fff;
+        float: left;
+        margin: 5px;
+        cursor: pointer;
+    }
+
+    .box ol li.now {
+        background-color: red;
+    }
+
+    /*箭头*/
+    .box .arrow{
+        display: none;
+    }
+    
+    .box:hover .arrow{
+        display: block;
+    }
+
+    .box .arrow .left:hover,
+    .box .arrow .right:hover{
+        background-color: rgba(0,0,0,.6);
+    }
+    
+    .box .arrow .left,
+    .box .arrow .right{
+        width: 30px;
+        height: 60px;
+        background-color: rgba(0,0,0,.4);
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 99;
+        text-align: center;
+        line-height: 60px;
+        color: #fff;
+        font-size: 24px;
+        font-family: "宋体";
+        font-weight: 700;
+        cursor: pointer;
+    }   
+    .box .arrow .left{
+        left: 0;
+    } 
+    .box .arrow .right{
+        right: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <!-- 放图片的 -->
+        <ul>
+            <li><a href="#"><img src="./images/1.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/2.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/3.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/4.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/5.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/6.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/7.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/8.jpg" alt=""></a></li>
+        </ul>
+        <!-- 放小圆点 -->
+        <ol></ol>
+        <!-- 箭头 -->
+        <div class="arrow">
+            <div class="left">&lt;</div>
+            <div class="right">&gt;</div>
+        </div>
+    </div>
+    <script src="animate.js"></script>
+    <script>
+
+        //找对象
+    var box = document.querySelector(".box");
+    var ul = box.querySelector("ul");
+    var imgs = ul.children;
+    var ol = box.querySelector("ol");
+    var leftBtn  = box.querySelector(".arrow .left");
+    var rightBtn = box.querySelector(".arrow .right");
+    var imgWidth = box.offsetWidth;
+
+    //js动态添加小圆点
+    for(var i = 0;i<imgs.length;i++) {
+        var li = document.createElement("li");
+        ol.appendChild(li);
+        if (i===0) {
+            li.className="now";    
+     }
+    }
+    //js动态克隆一个假图片
+    ul.appendChild(ul.firstElementChild.cloneNode(true));
+
+    //左右焦点图 无缝滚动
+    var count = 0;
+    var points = box.querySelectorAll("ol li");
+   leftBtn.onclick = function() {
+       if (count<=0) {
+           count =imgs.length-1;
+           ul.style.left = -count*imgWidth+'px';
+       }
+       count--;
+       animate(ul,-count*imgWidth);
+       for (var i = 0;i<points.length;i++) {
+           points[i].className="";
+       }
+       if (count>=imgs.length-1) {
+           points[0].className="now"
+       }
+       else {
+           points[count].className="now";
+       }
+   }
+   rightBtn.onclick=function(){
+       if (count>=imgs.length-1) {
+           count = 0;
+           ul.style.left = 0;
+       }
+       count++;
+       animate(ul,-count*imgWidth);
+       for (var i = 0;i<points.length;i++) {
+           points[i].className="";
+       }
+       if (count>=imgs.length-1) {
+           points[0].className="now"
+       }
+       else {
+           points[count].className="now";
+       }
+    }
+
+
+    //设置自动播放的功能
+    var timerId= setInterval( rightBtn.onclick,1800);
+
+    box.onmouseover = function() {
+        clearInterval(timerId);
+    }
+    box.onmouseout =function() {
+        timerId= setInterval( rightBtn.onclick,1800);
+    }
+
+    //小圆点的一一对应的功能
+    for(var i = 0;i<points.length;i++) {
+        points[i].index = i;
+
+        points[i].onclick=function() {
+            if (count>=imgs.length-1) {
+                ul.style.left = 0;
+            }
+            count= this.index;
+            animate(ul,-count*imgWidth);
+
+            for (var i = 0;i<points.length;i++) {
+                points[i].className="";
+            }
+            this.className="now";
+        }
+    }
+    
+    
+    
+    </script>
+  
+</body>
+</html>

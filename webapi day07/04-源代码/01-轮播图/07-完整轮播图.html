@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .box {
+        width: 790px;
+        height: 340px;
+        margin: 100px auto;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .box ul {
+        width: 900%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+    }
+
+    .box ul li {
+        float: left;
+    }
+    /*小圆点*/
+
+    .box ol {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 20px;
+        background-color: rgba(255, 255, 255, .6);
+        padding: 0 5px;
+        border-radius: 12px;
+    }
+
+    .box ol li {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #fff;
+        float: left;
+        margin: 5px;
+        cursor: pointer;
+    }
+
+    .box ol li.now {
+        background-color: red;
+    }
+
+    /*箭头*/
+    .box .arrow{
+        display: none;
+    }
+    
+    .box:hover .arrow{
+        display: block;
+    }
+
+    .box .arrow .left:hover,
+    .box .arrow .right:hover{
+        background-color: rgba(0,0,0,.6);
+    }
+    
+    .box .arrow .left,
+    .box .arrow .right{
+        width: 30px;
+        height: 60px;
+        background-color: rgba(0,0,0,.4);
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 99;
+        text-align: center;
+        line-height: 60px;
+        color: #fff;
+        font-size: 24px;
+        font-family: "宋体";
+        font-weight: 700;
+        cursor: pointer;
+    }   
+    .box .arrow .left{
+        left: 0;
+    } 
+    .box .arrow .right{
+        right: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <!-- 放图片的 -->
+        <ul>
+            <li><a href="#"><img src="./images/1.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/2.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/3.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/4.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/5.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/6.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/7.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/8.jpg" alt=""></a></li>
+        </ul>
+        <!-- 放小圆点 -->
+        <ol></ol>
+        <!-- 箭头 -->
+        <div class="arrow">
+            <div class="left">&lt;</div>
+            <div class="right">&gt;</div>
+        </div>
+    </div>
+    <script src="animate.js"></script>
+    <script>
+    // 明确的点：
+    //  1. 轮播图移动的是ul，left
+    //  2. ul的left取值只能是负值，不能是正的
+
+
+    // 需求：
+    // 1. js动态添加小圆点  ==>  需要根据图片的个数去创建小圆点
+    // 2. js动态添加最后一张假图片
+    // 3. 实现左右焦点图 + 无缝滚动
+    // 4. 自动播放
+    // 5. 点击小圆点同步切换
+    // 6. 解决点击小圆点的bug
+
+
+    // 1.
+    var box = document.querySelector(".box");
+    var ul = box.querySelector("ul");
+    var ol = box.querySelector("ol");
+    var imgs = ul.children;
+    var leftBtn = box.querySelector(".arrow .left");
+    var rightBtn = box.querySelector(".arrow .right");
+    var imgWidth = box.offsetWidth;
+
+
+    // 需求1. js动态添加小圆点
+    for (var i = 0; i < imgs.length; i++) {
+        var li = document.createElement("li");
+
+        // 第一种解决办法：
+        /*if(i === 0){
+            li.className = "now";
+        }*/
+        ol.appendChild(li);
+    }
+    // 第二种解决办法：
+    var points = box.querySelectorAll("ol li");
+    // console.log(points);
+    points[0].className = "now";
+
+
+    // 需求2： js动态添加最后一张假图片
+    ul.appendChild(ul.firstElementChild.cloneNode(true));
+
+    // 2.
+    var count = 0; // 表示ul出去的图片的张数
+    rightBtn.onclick = function () {
+        if(count >= imgs.length - 1){
+            // 当前展示的图片是最后一张（假图片）
+            // count = -1;  ==>  这样，是可以让ul回到第一张的，但是会倒退着回到第一张图片
+            ul.style.left = 0;
+            count = 0;
+            // console.log("当前展示了假图片");
+        }
+
+        count++;
+        console.log("出去的张数 " + count);
+        animate(ul, -count * imgWidth);
+
+
+        // 排他-高亮效果
+        for (var i = 0; i < points.length; i++) {
+            points[i].className = "";
+        }
+
+        if(count >= imgs.length - 1){
+            // 当前展示的是假图片，由于假图片和第一张是一样的，所以需要让第一个小圆点高亮
+            points[0].className = "now";    
+        }else{
+            // 展示的不是假图片 0-7
+            points[count].className = "now";
+        }
+    }
+
+    leftBtn.onclick = function () {
+        if(count <= 0){
+            // 当前展示的图片就是第一张
+            
+            // 瞬间回到假图片
+            count = imgs.length - 1;
+            ul.style.left = - count * imgWidth + "px";
+        }
+
+        count--;
+        console.log("出去的张数 " + count);
+        animate(ul, -count * imgWidth);
+
+
+        // 排他-高亮效果
+        for (var i = 0; i < points.length; i++) {
+            points[i].className = "";
+        }
+
+        if(count >= imgs.length - 1){
+            // 当前展示的是假图片，由于假图片和第一张是一样的，所以需要让第一个小圆点高亮
+            points[0].className = "now";   
+        }else{
+            // 展示的不是假图片 0-7
+            points[count].className = "now";
+        }
+    }
+
+    // 需求4： 自动播放
+    // 第一种写法
+    /*setInterval(function () {
+        // 把右箭头的点击事件触发一下
+        rightBtn.onclick();
+    }, 1000)*/
+
+    // 第二种写法：
+    var timerId = setInterval(rightBtn.onclick, 3000);
+
+    // 鼠标移入到box上，清除定时器
+    box.onmouseover = function () {
+        clearInterval(timerId);
+    }
+
+    // 鼠标移出box，重新开定时器
+    box.onmouseout = function () {
+        // timerId 前面不要用var， 否则timerId就是局部变量，外面无法清除这里开启的定时器
+        // 坑：
+        // var timerId = setInterval(rightBtn.onclick, 1000);
+        timerId = setInterval(rightBtn.onclick, 3000);
+    }
+
+    // 需求5： 点击小圆点同步切换
+    for (var i = 0; i < points.length; i++) {
+        points[i].index = i;
+
+        points[i].onclick = function () {
+
+            if(count >= imgs.length - 1){
+                // 在点击小圆点的时候，如果if成立了，说明点击的时候，当前展示的图片是假图片
+                // 让ul先瞬间回到第一张图片
+                ul.style.left = 0;
+                // count = 0;
+            }
+
+            // 3. 修改count出去的张数
+            count = this.index;
+
+            // 1. 移动ul
+            animate(ul, - count * imgWidth);
+
+            // 2. 排他-高亮效果
+            for (var i = 0; i < points.length; i++) {
+                points[i].className = "";
+            }
+            this.className = "now";
+        }
+    }
+
+    </script>
+</body>
+
+</html>

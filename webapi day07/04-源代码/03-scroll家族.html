@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: #f99;
+            overflow: scroll;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        这是文本，我们的webapi课程还有一天        
+        这是文本，我们的webapi课程还有一天        
+        这是文本，我们的webapi课程还有一天  
+        qwwefrgthyjedwwfergethyjuyttrefwdwfrgethyjuytrewdefreghytjtrewefregthytj     
+        这是文本，我们的webapi课程还有一天 
+        这是文本，我们的webapi课程还有一天        
+        这是文本，我们的webapi课程还有一天        
+        这是文本，我们的webapi课程还有一天        
+        这是文本，我们的webapi课程还有一天        
+        这是文本，我们的webapi课程还有一天        
+        这是文本，我们的webapi课程还有一天        
+        这是文本，我们的webapi课程还有一天        
+        这是文本，我们的webapi课程还有一天        
+    </div>
+
+    <script>
+
+        // scroll家族
+        //  scrollWidth scrollHeight  scrollLeft scrollTop
+
+
+        // scrollWidth scrollHeight： 获取文本的宽高
+
+        var box =document.querySelector("div");
+
+        /*console.log(box.offsetHeight);
+        console.log(box.scrollHeight);
+        console.log(box.scrollWidth);*/        
+
+        // scrollLeft scrollTop: 获取滚动条滚动的距离
+        //  scrollTop:垂直方向
+        //  scrollLeft： 水平方向滚动条滚动的距离
+        // 如果没有滚动条或者是滚动条没有滚动，拿到的结果就是0
+        console.log(box.scrollTop);
+
+        // onscroll： 当滚动条在滚动的时候触发
+        box.onscroll = function () {
+            console.log("scrollTop " + box.scrollTop);
+            console.log("scrollLeft  " + box.scrollLeft);
+        }
+
+        // scroll家族：
+        //  scrollWidth  scrollHeight  ==>   内容文本的宽高
+        //  srollLeft  scrollTop     ==>  滚动条滚动的距离
+
+        // onscroll  滚动条滚动的时候触发
+    </script>
+</body>
+</html>
