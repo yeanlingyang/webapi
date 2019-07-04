@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        img {
+            vertical-align: top;
+            width: 100%;
+        }
+
+        .main {
+            margin: 0 auto;
+            width: 1000px;
+            margin-top: 10px;
+
+        }
+
+        .fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top" id="topPart">
+        <img src="images/top.png" alt="" />
+    </div>
+    <div class="nav" id="navBar">
+        <img src="images/nav.png" alt="" />
+    </div>
+    <div class="main" id="mainPart">
+        <img src="images/main.png" alt="" />
+    </div>
+
+    <script>
+        // 思路：
+        //  1. 找对象（topPart、navBar）
+        //  2. 给页面注册onscroll
+        //  3. 获取页面垂直方向的卷曲距离  scrollTop
+        //  4. 把 scrollTop 和 topPart 的高度做比较
+        //     4.1 scrollTop >= topPart 的高度  ==> navBar 固定定位
+        //      mainPart 会跑到上面去，给mainPart 设置marginTop = 10 + navBar的高度
+        //     4.2 否则，取消navBar 固定定位
+
+        // 1.
+        var topPart = document.querySelector("#topPart");
+        var navBar = document.querySelector("#navBar");
+        var mainPart = document.querySelector("#mainPart");
+
+        // 2.
+        window.onscroll = function () {
+            // 3.
+            var scrollTop = window.pageYOffset;
+
+            // 4.
+            if(scrollTop >= topPart.offsetHeight){
+                navBar.className = "fixed";
+
+                mainPart.style.marginTop = 10 + navBar.offsetHeight + "px";
+            }else{
+                navBar.className = "";
+
+                mainPart.style.marginTop = "10px";
+            }
+        }
+    </script>
+</body>
+
+</html>

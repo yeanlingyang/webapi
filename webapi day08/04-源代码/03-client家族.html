@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: #f99;
+            padding: 10px;
+            border: 10px solid #000;
+            border-left: 20px solid #ccc;
+            border-top: 40px solid red;
+        }
+    </style>
+</head>
+<body>
+    
+    <div>
+        阿瑟提货人合同
+    </div>
+
+
+
+    <script>
+        // client家族
+        //  clientWidth clientHeight clientLeft clientTop
+        
+        //  clientWidth clientHeight 
+        
+        var  box = document.querySelector("div");
+        // console.log(box.offsetHeight);  // 
+
+        // 在没有文本或者是文本没有撑开滚动条的时候，scrollHeight 和 clientHeight是一样大小
+        // console.log(box.scrollHeight);
+        // console.log(box.clientHeight);
+
+
+        // clientLeft clientTop
+        //   clientLeft  ==> borderLeft的大小
+        //   clientTop  ==> borderTop的大小
+        console.log(box.clientLeft);
+        console.log(box.clientTop);
+
+        // 小结：
+        //  clientWidth clientHeight  ==>  可视区的大小
+        //  clientLeft clientTop   ==>  左边框  上边框的大小
+    </script>
+</body>
+</html>

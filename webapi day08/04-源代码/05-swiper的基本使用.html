@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="swiper/css/swiper.css">
+    <style>
+        .swiper-container{
+            width: 790px;
+            height: 340px;
+        }
+    
+        .swiper-pagination-bullet{
+            background-color: #fff;
+            opacity: 1;
+        }
+
+        .swiper-pagination-bullet-active{
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- swiper-container 类似于 box -->
+    <div class="swiper-container">
+        <!-- swiper-wrapper 类似于 ul -->
+        <div class="swiper-wrapper">
+            <!-- swiper-slide 类似于 li -->
+            <div class="swiper-slide">
+                <a href="#"><img src="01-轮播图/images/1.jpg" alt=""></a>
+            </div>
+            <div class="swiper-slide">
+                <a href="#"><img src="01-轮播图/images/2.jpg" alt=""></a>
+            </div>
+            <div class="swiper-slide">
+                <a href="#"><img src="01-轮播图/images/3.jpg" alt=""></a>
+            </div>
+            <div class="swiper-slide">
+                <a href="#"><img src="01-轮播图/images/4.jpg" alt=""></a>
+            </div>
+            <div class="swiper-slide">
+                <a href="#"><img src="01-轮播图/images/5.jpg" alt=""></a>
+            </div>
+        </div>
+
+        <!-- swiper-pagination 类似于ol -->
+        <div class="swiper-pagination"></div>
+
+        <!-- 左右箭头 -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+
+    <script src="swiper/js/swiper.js"></script>
+    <script>
+        // 初始化swiper
+        new Swiper(".swiper-container", {
+            // 配置轮播图的效果
+
+            // 无缝效果
+            loop: true,
+
+            // 滑动方向
+            // direction: 'vertical',
+
+            // speed: 1000,
+
+            // 自动播放
+            /*autoplay: {
+                delay: 1000,
+                disableOnInteraction: false
+            },*/
+
+            // 切换效果
+            // effect: "flip",
+
+            // 左右箭头
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            },
+
+            // 小圆点
+            pagination: {
+              el: '.swiper-pagination',
+              clickable :true,
+            }
+        });
+    </script>
+</body>
+
+</html>

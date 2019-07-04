@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .father{
+            width: 100px;
+            height: 100px;
+            border: 4px solid #000;
+            margin: 100px auto;
+            position: relative;
+        }
+        .son{
+            width: 400px;
+            height: 400px;
+            background-color: #f99;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    
+    <script>
+        /*var son = document.querySelector(".son");
+
+        var startX;  // 记录摁下的位置
+        var total = 0;  // 记录总的移动的距离
+
+        son.addEventListener("touchstart", function (e) {
+            // 摁下去的时候，记录摁下的位置
+            startX = e.touches[0].pageX;
+            // console.log(startX);
+        })
+
+        son.addEventListener("touchmove", function (e) {
+            // 计算移动的距离 ==>  现在手指的位置 - 开始摁下的位置（startX）
+            var moveX = e.touches[0].pageX - startX;
+            console.log(moveX);
+
+            // 把这一次移动的距离 + 以前移动的距离
+            son.style.left = moveX + total + "px";
+        })
+
+        // 在触摸结束的时候，统计总的移动距离
+        son.addEventListener("touchend", function (e) {
+            // 把这一次移动的距离获取到，加到 total
+
+            // console.log(e.changedTouches);
+            // 注意： 在touchend事件中， touches、targetTouches属性都是空的，因为手指头已经离开了屏幕上
+            // changedTouches 上有手指头信息
+            // 在touchend中，需要通过 changedTouches来获取手指位置信息
+
+            var x = e.changedTouches[0].pageX - startX; // 移动的距离
+            console.log(x);
+            total += x;
+        })*/
+    </script>
+    
+    <script src="iscroll.js"></script>
+    <script>
+
+        // IScroll 实现区域滚动的注意点：
+        //  1. son的宽度必须要比father 的宽度要大
+        //  2. 只有容器的第一个子元素才有滚动效果 ==> 注意区域滚动结构
+        new IScroll(".father", {
+            // 水平方向滚动
+            scrollX: true,
+            scrollY: false,
+            // 支持鼠标滚轮控制滚动
+            mouseWheel: true,
+            bounce: false
+        });
+    </script>
+</body>
+</html>

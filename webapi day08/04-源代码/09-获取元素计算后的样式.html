@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: #f99;
+            border-radius: 20px;
+        }
+        .box{
+            border-radius: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">123</div>
+
+    <script>
+        var box = document.querySelector("div");
+
+        // console.log(box.offsetWidth);        
+        // console.log(box.style.backgroundColor);
+
+        // window.getComputedStyle(dom元素, 是否获取伪类的样式);  // 获取元素计算后的样式，获取在元素上起效果的样式
+        //  参数：
+        //      dom元素： 获取哪个元素的样式   
+        //      是否获取伪类的样式： 通常写null，不用获取伪类的样式
+        //  返回值：
+        //      是一个对象，对象里面是元素所有计算后的样式
+
+
+        console.log(window.getComputedStyle(box, null).backgroundColor);
+        console.log(window.getComputedStyle(box, null).borderRadius);
+        console.log(window.getComputedStyle(box, null).fontSize);
+
+
+        // 小结：
+        //  获取元素样式操作
+        //   1. style 获取的是行内样式
+        //   2. offset系列： 获取宽高 、 位置间距信息
+        //   3. window.getComputedStyle ：获取的是元素起效果的样式
+    </script>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>京东商城</title>
+  <!-- 引入京东的小图标 -->
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="swiper/css/swiper.css">
+
+  <style>
+      .swiper-pagination-bullet{
+          background-color: #fff;
+          opacity: 1;
+      }
+
+      .swiper-pagination-bullet-active{
+          background-color: red;
+      }
+  </style>
+</head>
+<body>
+  <div class="jd_container">
+    <!-- 京东头部 -->
+    <header class="jd_header">
+      <div class="logo">
+        <i class="jd_sprit"></i>
+      </div>
+      <div class="login">
+        <a href="#">登录</a>
+      </div>
+      <div class="search">
+        <input type="search" placeholder="上海黑马41期">
+        <i class="jd_sprit search_icon"></i>
+      </div>
+    </header>
+    <!-- 京东轮播图 -->
+    <div class="jd_banner swiper-container">
+      <ul class="swiper-wrapper">
+        <li class="swiper-slide"><a href="#"><img src="images/banner01.jpg" alt=""></a></li>
+        <li class="swiper-slide"><a href="#"><img src="images/banner02.jpg" alt=""></a></li>
+        <li class="swiper-slide"><a href="#"><img src="images/banner03.jpg" alt=""></a></li>
+        <li class="swiper-slide"><a href="#"><img src="images/banner04.jpg" alt=""></a></li>
+        <li class="swiper-slide"><a href="#"><img src="images/banner05.jpg" alt=""></a></li>
+        <li class="swiper-slide"><a href="#"><img src="images/banner06.jpg" alt=""></a></li>
+        <li class="swiper-slide"><a href="#"><img src="images/banner07.jpg" alt=""></a></li>
+        <li class="swiper-slide"><a href="#"><img src="images/banner08.jpg" alt=""></a></li>
+      </ul>
+
+      <div class="swiper-pagination"></div>
+    </div>
+    <!-- 京东导航 -->
+    <div class="jd_nav">
+      <ul class="clearfix">
+        <li>
+          <a href="#">
+            <img src="images/nav01.png" alt="" />
+            <p>京东超市</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="images/nav02.png" alt="" />
+            <p>全球购</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="images/nav03.png" alt="" />
+            <p>服装城</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="images/nav04.png" alt="" />
+            <p>京东生鲜</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="images/nav05.png" alt="" />
+            <p>京东到家</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="images/nav06.png" alt="" />
+            <p>充值中心</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="images/nav07.png" alt="" />
+            <p>京东金融</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="images/nav08.png" alt="" />
+            <p>领券</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="images/nav09.png" alt="" />
+            <p>物流查询</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="images/nav10.png" alt="" />
+            <p>我的关注</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- 京东新闻 -->
+    <div class="jd_news">
+      <div class="logo">
+        <img src="images/jd-news-tit.png" alt="">
+      </div>
+      <div class="more">
+        <a href="#">| 更多</a>
+      </div>
+      <div id="jd_news" class="info swiper-container">
+        <ul class="swiper-wrapper">
+          <li class="one-txt-cut swiper-slide swiper-no-swiping"><a href="#">传智大前端41期，毕业薪资15k</a></li>
+          <li class="one-txt-cut swiper-slide swiper-no-swiping"><a href="#">传智大前端41期，毕业薪资20k</a></li>
+          <li class="one-txt-cut swiper-slide swiper-no-swiping"><a href="#">传智大前端41期，毕业薪资30k</a></li>
+          <li class="one-txt-cut swiper-slide swiper-no-swiping"><a href="#">传智大前端41期，毕业薪资50k</a></li>
+          <li class="one-txt-cut swiper-slide swiper-no-swiping"><a href="#">传智大前端41期，毕业薪资60k</a></li>
+          <li class="one-txt-cut swiper-slide swiper-no-swiping"><a href="#">传智大前端41期，毕业薪资-100k</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- 京东秒杀 -->
+    <div class="jd_seckill">
+      <div class="seckill_title">
+        <div class="logo">
+          <i class="jd_sprit"></i>
+          <span>京东秒杀</span>
+        </div>
+        <div class="more">
+          <a href="#">更多秒杀 &gt;</a>
+        </div>
+        <div class="time">
+          <span>00</span>
+          <span>:</span>
+          <span>00</span>
+          <span>:</span>
+          <span>00</span>
+        </div>
+      </div>
+      <div class="seckill_content">
+        <ul class="clearfix">
+          <li>
+            <a href="#">
+              <img src="images/sec01.jpg" alt="">
+            </a>
+            <p class="p1">&yen;1499</p>
+            <p class="p2">&yen;1999</p>
+          </li>
+          <li>
+            <a href="#">
+              <img src="images/sec01.jpg" alt="">
+            </a>
+            <p class="p1">&yen;1499</p>
+            <p class="p2">&yen;1999</p>
+          </li>
+          <li>
+            <a href="#">
+              <img src="images/sec01.jpg" alt="">
+            </a>
+            <p class="p1">&yen;1499</p>
+            <p class="p2">&yen;1999</p>
+          </li>
+          <li>
+            <a href="#">
+              <img src="images/sec02.jpg" alt="">
+            </a>
+            <p class="p1">&yen;1499</p>
+            <p class="p2">&yen;1999</p>
+          </li>
+          <li>
+            <a href="#">
+              <img src="images/sec03.jpg" alt="">
+            </a>
+            <p class="p1">&yen;1499</p>
+            <p class="p2">&yen;1999</p>
+          </li>
+          <li>
+            <a href="#">
+              <img src="images/sec04.jpg" alt="">
+            </a>
+            <p class="p1">&yen;1499</p>
+            <p class="p2">&yen;1999</p>
+          </li>
+          <li>
+            <a href="#">
+              <img src="images/sec05.jpg" alt="">
+            </a>
+            <p class="p1">&yen;1499</p>
+            <p class="p2">&yen;1999</p>
+          </li>
+          <li>
+            <a href="#">
+              <img src="images/sec06.jpg" alt="">
+            </a>
+            <p class="p1">&yen;1499</p>
+            <p class="p2">&yen;1999</p>
+          </li>
+          <li>
+            <a href="#">
+              <img src="images/sec07.jpg" alt="">
+            </a>
+            <p class="p1">&yen;1499</p>
+            <p class="p2">&yen;1999</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- 京东主会场 -->
+    <div class="jd_main">
+      <ul class="clearfix">
+        <li>
+          <a href="#"><img src="images/item01.jpg" alt=""></a>
+        </li>
+        <li>
+          <a href="#"><img src="images/item02.jpg" alt=""></a>
+        </li>
+        <li>
+          <a href="#"><img src="images/item03.jpg" alt=""></a>
+        </li>
+      </ul>
+    </div>
+    <!-- 京东商品 -->
+    <div class="jd_product">
+      <ul>
+        <li>
+          <a href="#"><img src="images/major_1.jpg" alt=""></a>
+          <a href="#"><img src="images/major_2.jpg" alt=""></a>
+          <a href="#"><img src="images/major_3.jpg" alt=""></a>
+        </li>
+        <li>
+          <a href="#"><img src="images/major_4.jpg" alt=""></a>
+          <a href="#"><img src="images/major_5.jpg" alt=""></a>
+        </li>
+        <li>
+          <a href="#"><img src="images/major_6.jpg" alt=""></a>
+          <a href="#"><img src="images/major_7.jpg" alt=""></a>
+        </li>
+      </ul>
+    </div>
+    <!-- 京东底部 -->
+    <div class="jd_footer">
+      <ul class="clearfix">
+        <li><a href="#"><img src="images/footer01.png" alt=""></a></li>
+        <li><a href="#"><img src="images/footer02.png" alt=""></a></li>
+        <li><a href="#"><img src="images/footer03.png" alt=""></a></li>
+        <li><a href="#"><img src="images/footer04.png" alt=""></a></li>
+        <li><a href="#"><img src="images/footer05.png" alt=""></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="swiper/js/swiper.js"></script>
+  <script src="js/iscroll.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 获取页面可视区的大小
+
+        //  存在兼容性
+        // 老: 通过html、body来获取clientWidth  clientHeight
+        // 新： window.innerWidth window.innerHeight
+
+        console.log(window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth);
+        
+
+        // onresize 当窗口大小发生改变的时候触发， 事件注册在window上
+
+        window.onresize = function () {
+            console.log(window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth);
+        }
+
+
+
+
+        // 小结：
+        //  三大家族：
+        //      offset：
+        //          offsetWidth offsetHeight offsetLeft offsetTop offsetParent  都是常用的
+        //          只读属性，设置无效
+        //          
+        //      scroll
+        //          scrollWidth scrollHeight scrollLeft scrollTop
+        //          常用的  scrollTop  获取页面垂直方向卷曲的距离
+        //          滚动事件： onscroll 注册给window
+        //          获取页面垂直方向的卷曲距离：window.pageYOffset
+
+        //      client
+        //          clientWidth clientHeight clientLeft clientTop
+        //          常用的：clientWidth clientHeight 可视区的大小
+        //          事件： onresize
+        //          获取可视区的大小： window.innerWidth
+
+
+        // window  document 表示给页面注册事件
+        // 给window注册的三个：
+        //  window.onscroll
+        //  window.onresize
+        //  window.onload  入口函数
+        //  
+        //  其他的要给页面注册事件，注册在document上就可以了
+
+    </script>
+</body>
+</html>

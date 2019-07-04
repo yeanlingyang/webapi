@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: #f99;
+        }
+    </style>
+</head>
+<body>
+    
+    <div></div>
+
+    <script>
+
+        // 移动端的专属事件
+        // touchstart: 触摸开始
+        // touchmove：  触摸移动
+        // touchend：  触摸结束
+        // touchcancel：  取消触摸  应用权限比较高  电话   会触发该事件
+
+        var box = document.querySelector("div");
+
+
+        // 获取手指头的位置信息，需要在事件对象中获取
+        // 事件对象常用的属性
+        // 
+        //  伪数组
+        // touches     ==>   当前屏幕上的手指信息      clientX  pageX  screenX
+        // targetTouches  ==>  当前元素上的手指信息
+        // changedTouches   ==>  改变后的手指信息
+
+        // 只有一个手指的时候，获取手指的位置信息，上面三个都可以获取到
+
+        box.addEventListener("touchstart", function (e) {
+          // console.log("触摸开始");
+          // console.log(e);
+          console.log(e.touches[0]);
+          // console.log(e.targetTouches[0]);
+          // console.log(e.changedTouches[0]);
+        })
+
+        box.addEventListener("touchmove", function () {
+          console.log("触摸移动");  
+        })
+
+        box.addEventListener("touchend", function () {
+          console.log("触摸结束");  
+        })
+
+        box.addEventListener("touchcancel", function () {
+          console.log("取消触摸");  
+        })
+
+        // 小结：
+        //  移动端  提供了自己的手指事件   
+        //    touchstart
+        //    touchmove
+        //    touchend
+        //    touchcancel
+
+        // 获取手指位置信息
+        //   通过事件对象
+        //    1. touches  ==>  屏幕上的手指信息
+        //    2. targetTouches  ==>  当前元素上的手指信息
+        //    2. changedTouches  ==>  改变的手指信息
+
+        //  pageX  clientX
+    </script>
+</body>
+</html>

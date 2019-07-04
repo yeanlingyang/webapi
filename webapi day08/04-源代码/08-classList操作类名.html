@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="aa bb dd ff"></div>
+
+    <script>
+        // 给div添加cc 类名
+
+        var box = document.querySelector("div");
+
+        // className 在设置类名的时候，存在覆盖问题
+        // box.className = "aa bb cc";
+
+
+        // H5提供了 classList 属性， 记录元素所有的类名, 还提供了添加和删除类名等操作
+        // classList.add("name");  // 只是来添加类名，不会有覆盖问题
+        // classList.remove("name");  // 只是来移除类名，不会有覆盖问题
+        // classList.contains("name");  // 判断元素是否有指定的类名，如果有就返回true
+        // classList.toggle("name");  // 切换类名，如果有就移除，没有就添加
+
+        box.classList.add("cc");
+        box.classList.remove("dd");
+        console.log(box.classList.contains("aa"));
+        box.classList.toggle("gg");
+        box.classList.toggle("gg");
+    </script>
+</body>
+</html>
